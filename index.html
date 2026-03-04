@@ -11,14 +11,24 @@
             color: #fff;
         }
 
-        /* Header */
+        /* Header 橫幅壁紙 */
+    header img {
+        width: 100%;          /* 撐滿容器寬度 */
+        max-height: 50vh;     /* 桌面最大高度限制，可調整 */
+        height: auto;         /* 自動依比例縮放 */
+        object-fit: cover;    /* 保持比例並裁切超出部分 */
+        display: block;
+        border-radius: 10px;
+        margin: 0 auto;
+    }
+
+/* 手機螢幕下 */
+    @media (max-width: 768px) {
         header img {
-            width: 100%;
-            max-height: 80vh;
-            object-fit: cover;
-            display: block;
-            border-radius: 10px;
+            max-height: 30vh; /* 手機高度縮小 */
+            width: 100%;      /* 撐滿手機螢幕寬度 */
         }
+    }
 
         header h1 {
             text-align: center;
@@ -343,3 +353,4 @@
 
 </body>
 </html>
+
