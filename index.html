@@ -11,28 +11,12 @@
             color: #fff;
         }
 
-        /* Header 橫幅壁紙 */
-    header img {
-        width: 100%;          /* 撐滿容器寬度 */
-        max-height: 50vh;     /* 桌面最大高度限制，可調整 */
-        height: auto;         /* 自動依比例縮放 */
-        object-fit: cover;    /* 保持比例並裁切超出部分 */
-        display: block;
-        border-radius: 10px;
-        margin: 0 auto;
-    }
-
-/* 手機螢幕下 */
-    @media (max-width: 768px) {
+        /* Header */
         header img {
-            max-height: 30vh; /* 手機高度縮小 */
-            width: 100%;      /* 撐滿手機螢幕寬度 */
-        }
-    }
-
-        header h1 {
-            text-align: center;
-            margin: 20px 0;
+            width: 100%;
+            height: 80vh;
+            object-fit: cover;
+            display: block;
         }
 
         section {
@@ -66,11 +50,8 @@
 
         .character-card img {
             width: 100%;
-            max-width: 300px;
-            height: auto;
             border-radius: 10px;
             transition: transform 0.3s, filter 0.3s;
-            margin: 0 auto;
         }
 
         .character-card:hover {
@@ -83,7 +64,7 @@
             filter: brightness(1.1);
         }
 
-        /* 技能區 */
+        /* 重要情報一覽 */
         .skills {
             display: flex;
             gap: 30px;
@@ -97,65 +78,12 @@
             flex: 1 1 200px;
         }
 
-        /* 表格區 */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            background-color: #222;
-            color: #fff;
-            text-align: center;
-        }
-
-        th, td {
-            padding: 10px;
-            border: 1px solid #555;
-        }
-
-        th {
-            background-color: #333;
-        }
-
-        tbody tr:nth-child(even) {
-            background-color: #1a1a1a;
-        }
-
-        tbody tr:hover {
-            background-color: #444;
-        }
-
-        /* 攻略圖片 */
-        #guide img {
-            width: 100%;
-            max-width: 600px;
-            height: auto;
-            display: block;
-            margin: 20px auto;
-            border-radius: 10px;
-        }
-
         /* Footer */
         footer {
             background-color: #000;
             text-align: center;
             padding: 20px;
             color: #888;
-        }
-
-        /* 手機螢幕優化 */
-        @media (max-width: 768px) {
-            section {
-                padding: 40px 5%;
-            }
-
-            header img {
-                max-height: 30vh;
-            }
-
-            .character-card img,
-            #guide img {
-                width: 100%;
-                max-width: 100%;
-            }
         }
     </style>
 </head>
@@ -167,177 +95,240 @@
         <h1>哈帕迪攻略</h1>
     </header>
 
-    <!-- 職業區 -->
-    <section id="characters">
-        <h2>六轉職業</h2>
-        <div class="characters">
-            <div class="character-card" onclick="location.href='fighter.html'">
-                <img src="fighter.png" alt="鬥士">
-                <h3>鬥士</h3>
-            </div>
-            <div class="character-card" onclick="location.href='knight.html'">
-                <img src="knight.png" alt="騎士">
-                <h3>騎士</h3>
-            </div>
-            <div class="character-card" onclick="location.href='mage.html'">
-                <img src="mage.png" alt="術士">
-                <h3>術士</h3>
-            </div>
-            <div class="character-card" onclick="location.href='sage.html'">
-                <img src="sage.png" alt="賢者">
-                <h3>賢者</h3>
-            </div>
-        </div>
-    </section>
+    <!-- 微信小程序區 -->
+<section id="wechat" style="margin-top:40px;">
+    <h2>微信小程序</h2>
+    <p>好用的微信小程序：</p>
+    <!-- 小程序截圖，原始大小顯示 -->
+    <img src="wc.png" alt="杖剑工具小程序截圖" 
+     style="max-width:300px; width:100%; height:auto; border-radius:10px; display:block; margin-bottom:10px;">
+    
+    <input type="text" value="#小程序://杖剑工具/tENlVKzlpKZiuPh" id="wechatLink" readonly
+           style="width:300px; padding:5px; border-radius:5px; border:none; background-color:#333; color:#fff;">
+    <button onclick="copyLink()" 
+            style="margin-left:10px; padding:5px 10px; border:none; border-radius:5px; background-color:#4af; color:#000; cursor:pointer;">
+        一鍵複製
+    </button>
+    <p style="color:#aaa; font-size:0.9rem; margin-top:5px;">
+        點「一鍵複製」後，打開微信 → 在搜索欄粘貼即可使用小程序。
+    </p>
+</section>
 
-    <!-- 副本表格區 -->
+<script>
+function copyLink() {
+    const copyText = document.getElementById("wechatLink");
+    copyText.select();
+    copyText.setSelectionRange(0, 99999); // 手機適用
+    navigator.clipboard.writeText(copyText.value).then(() => {
+        alert("鏈接已複製！");
+    }).catch(() => {
+        alert("複製失敗，請手動複製。");
+    });
+}
+</script>
+
+    <!-- 職業區 -->
+<section id="characters">
+    <h2>六轉職業</h2>
+    <div class="characters">
+    <div class="character-card" onclick="location.href='fighter.html'">
+        <img src="fighter.png" alt="鬥士">
+        <h3>鬥士</h3>
+    </div>
+    <div class="character-card" onclick="location.href='knight.html'">
+        <img src="knight.png" alt="騎士">
+        <h3>騎士</h3>
+    </div>
+    <div class="character-card" onclick="location.href='mage.html'">
+        <img src="mage.png" alt="術士">
+        <h3>術士</h3>
+    </div>
+    <div class="character-card" onclick="location.href='sage.html'">
+        <img src="sage.png" alt="賢者">
+        <h3>賢者</h3>
+    </div>
+</div>
+</section>
+
+    <!-- 重要情報一覽 -->
     <section id="dungeon-table">
-        <h2>重要情報一覽</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>日期</th>
-                    <th>天數</th>
-                    <th>等級</th>
-                    <th>副本</th>
-                    <th>普通</th>
-                    <th>困難</th>
-                    <th>惡夢</th>
-                    <th>煉獄</th>
-                    <th>深淵</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>23/2（一）</td>
-                    <td>212</td>
-                    <td>-</td>
-                    <td>奇巧鐘樓</td>
-                    <td>-</td>
-                    <td>2700萬</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td>180</td>
-                    <td>幻獸同調</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>8/3（日）</td>
-                    <td>225</td>
-                    <td>-</td>
-                    <td>樂園海盜船</td>
-                    <td>3500萬</td>
-                    <td>4600萬</td>
-                    <td>5250萬</td>
-                    <td>7700萬</td>
-                    <td>X</td>
-                </tr>
-                <tr>
-                    <td>9/3（一）</td>
-                    <td>226</td>
-                    <td>-</td>
-                    <td>賽季地圖</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>22/3（日）</td>
-                    <td>239</td>
-                    <td>-</td>
-                    <td>海皇潛艇</td>
-                    <td>5700萬</td>
-                    <td>6600萬</td>
-                    <td>8000萬</td>
-                    <td>1.2億</td>
-                    <td>X</td>
-                </tr>
-                <tr>
-                    <td>25/3（三）</td>
-                    <td>272</td>
-                    <td>-</td>
-                    <td>哈帕迪古遺物第二池塘</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>5/4（日）</td>
-                    <td>253</td>
-                    <td>-</td>
-                    <td>發條要塞</td>
-                    <td>8400萬</td>
-                    <td>1億</td>
-                    <td>1.2億</td>
-                    <td>1.75億</td>
-                    <td>X</td>
-                </tr>
-                <tr>
-                    <td>19/4（日）</td>
-                    <td>267</td>
-                    <td>-</td>
-                    <td>天象觀測站</td>
-                    <td>1.3億</td>
-                    <td>1.5億</td>
-                    <td>1.9億</td>
-                    <td>2.7億</td>
-                    <td>X</td>
-                </tr>
-                <tr>
-                    <td>24/4（五）</td>
-                    <td>242</td>
-                    <td>-</td>
-                    <td>哈帕迪古遺物第三池塘</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>3/5（日）</td>
-                    <td>281</td>
-                    <td>-</td>
-                    <td>泰坦樂氣球</td>
-                    <td>2億</td>
-                    <td>2.3億</td>
-                    <td>2.9億</td>
-                    <td>4.2億</td>
-                    <td>X</td>
-                </tr>
-                <tr>
-                    <td>17/5（日）</td>
-                    <td>295</td>
-                    <td>-</td>
-                    <td>星空之城</td>
-                    <td>2.9億</td>
-                    <td>3.5億</td>
-                    <td>4.4億</td>
-                    <td>6.6億</td>
-                    <td>X</td>
-                </tr>
-            </tbody>
-        </table>
-        <p style="color:#aaa; font-size:0.9rem; margin-top:10px;">
-            備註：括弧内為星期。
-        </p>
-        <p style="margin-top:10px; text-align:center;">
-            <a href="https://www.taptap.cn/moment/761801474576482900?utm_medium=&utm_source=copy&share_id=" target="_blank" style="color:#4af;">查看更多副本詳情</a>
-        </p>
-    </section>
+    <h2>重要情報一覽</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>日期</th>
+                <th>天數</th>
+                <th>倒數</th>
+                <th>等級</th>
+                <th>副本</th>
+                <th>普通</th>
+                <th>困難</th>
+                <th>惡夢</th>
+                <th>煉獄</th>
+                <th>深淵</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>23/2（一）</td>
+                <td>212</td>
+                <td class="countdown"></td>
+                <td>-</td>
+                <td>奇巧鐘樓</td>
+                <td>-</td>
+                <td>2700萬</td>
+                <td>X</td>
+                <td>X</td>
+                <td>X</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td>180</td>
+                <td>幻獸同調</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>8/3（日）</td>
+                <td>225</td>
+                <td>-</td>
+                <td>樂園海盜船</td>
+                <td>3500萬</td>
+                <td>4600萬</td>
+                <td>5250萬</td>
+                <td>7700萬</td>
+                <td>X</td>
+            </tr>
+            <tr>
+                <td>9/3（一）</td>
+                <td>226</td>
+                <td>-</td>
+                <td>賽季地圖</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>22/3（日）</td>
+                <td>239</td>
+                <td>-</td>
+                <td>海皇潛艇</td>
+                <td>5700萬</td>
+                <td>6600萬</td>
+                <td>8000萬</td>
+                <td>1.2億</td>
+                <td>X</td>
+            </tr>
+            <tr>
+                <td>25/3（三）</td>
+                <td>272</td>
+                <td>-</td>
+                <td>哈帕迪古遺物第二池塘</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>5/4（日）</td>
+                <td>253</td>
+                <td>-</td>
+                <td>發條要塞</td>
+                <td>8400萬</td>
+                <td>1億</td>
+                <td>1.2億</td>
+                <td>1.75億</td>
+                <td>X</td>
+            </tr>
+            <tr>
+                <td>19/4（日）</td>
+                <td>267</td>
+                <td>-</td>
+                <td>天象觀測站</td>
+                <td>1.3億</td>
+                <td>1.5億</td>
+                <td>1.9億</td>
+                <td>2.7億</td>
+                <td>X</td>
+            </tr>
+            <tr>
+                <td>24/4（五）</td>
+                <td>242</td>
+                <td>-</td>
+                <td>哈帕迪古遺物第三池塘</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>3/5（日）</td>
+                <td>281</td>
+                <td>-</td>
+                <td>泰坦樂氣球</td>
+                <td>2億</td>
+                <td>2.3億</td>
+                <td>2.9億</td>
+                <td>4.2億</td>
+                <td>X</td>
+            </tr>
+            <tr>
+                <td>17/5（日）</td>
+                <td>295</td>
+                <td>-</td>
+                <td>星空之城</td>
+                <td>2.9億</td>
+                <td>3.5億</td>
+                <td>4.4億</td>
+                <td>6.6億</td>
+                <td>X</td>
+            </tr>
+        </tbody>
+    </table>
+    <!-- Remark -->
+    <p style="color:#aaa; font-size:0.9rem; margin-top:10px;">
+        備註：括弧内為星期。
+    </p>
+    <!-- 更多副本詳情鏈接 -->
+    <p style="margin-top:10px; text-align:center;">
+        <a href="https://www.taptap.cn/moment/761801474576482900?utm_medium=&utm_source=copy&share_id=" target="_blank" style="color:#4af;">查看更多副本詳情</a>
+    </p>
+</section>
+
+<style>
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        background-color: #222;
+        color: #fff;
+        text-align: center;
+    }
+
+    th, td {
+        padding: 10px;
+        border: 1px solid #555;
+    }
+
+    th {
+        background-color: #333;
+    }
+
+    tbody tr:nth-child(even) {
+        background-color: #1a1a1a;
+    }
+
+    tbody tr:hover {
+        background-color: #444;
+    }
+</style>
 
     <!-- 攻略內容區 -->
     <section id="guide">
@@ -353,5 +344,3 @@
 
 </body>
 </html>
-
-
