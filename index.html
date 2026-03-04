@@ -2,7 +2,9 @@
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
-    <title>仗劍傳說：坎斯汀之約 </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>仗劍傳說：坎斯汀之約</title>
+
     <style>
         body {
             margin: 0;
@@ -12,11 +14,44 @@
         }
 
         /* Header */
+        header {
+            position: relative;
+            text-align: center;
+        }
+
         header img {
             width: 100%;
             height: 80vh;
             object-fit: cover;
             display: block;
+        }
+
+        .hero-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .novel-btn {
+            padding: 12px 35px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 30px;
+            background: linear-gradient(45deg, #4af, #8ef);
+            color: #000;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .novel-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(0,170,255,0.6);
         }
 
         section {
@@ -51,7 +86,6 @@
         .character-card img {
             width: 100%;
             border-radius: 10px;
-            transition: transform 0.3s, filter 0.3s;
         }
 
         .character-card:hover {
@@ -59,41 +93,63 @@
             box-shadow: 0 10px 20px rgba(255,255,255,0.2);
         }
 
-        .character-card:hover img {
-            transform: scale(1.05);
-            filter: brightness(1.1);
-        }
-
-        /* 重要情報一覽 */
-        .skills {
-            display: flex;
-            gap: 30px;
-            flex-wrap: wrap;
-        }
-
-        .skill-card {
+        /* 表格 */
+        table {
+            width: 100%;
+            border-collapse: collapse;
             background-color: #222;
-            padding: 15px;
-            border-radius: 10px;
-            flex: 1 1 200px;
+            color: #fff;
+            text-align: center;
         }
 
-        /* Footer */
+        th, td {
+            padding: 10px;
+            border: 1px solid #555;
+        }
+
+        th {
+            background-color: #333;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #1a1a1a;
+        }
+
+        tbody tr:hover {
+            background-color: #444;
+        }
+
         footer {
             background-color: #000;
             text-align: center;
             padding: 20px;
             color: #888;
         }
+
+        /* 手機優化 */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+            .novel-btn {
+                padding: 10px 25px;
+            }
+        }
     </style>
 </head>
+
 <body>
 
-    <!-- Header -->
-    <header>
-        <img src="wallpaper.jpg" alt="遊戲橫幅圖片">
+<header>
+    <img src="wallpaper.jpg" alt="遊戲橫幅圖片">
+
+    <div class="hero-content">
         <h1>哈帕迪攻略</h1>
-    </header>
+        <button class="novel-btn" onclick="location.href='novel.html'">
+            查看小說
+        </button>
+    </div>
+</header>
 
     <!-- 微信小程序區 -->
 <section id="wechat" style="margin-top:40px;">
@@ -126,6 +182,29 @@ function copyLink() {
     });
 }
 </script>
+
+    <!-- 職業區 -->
+<section id="characters">
+    <h2>六轉職業</h2>
+    <div class="characters">
+    <div class="character-card" onclick="location.href='fighter.html'">
+        <img src="fighter.png" alt="鬥士">
+        <h3>鬥士</h3>
+    </div>
+    <div class="character-card" onclick="location.href='knight.html'">
+        <img src="knight.png" alt="騎士">
+        <h3>騎士</h3>
+    </div>
+    <div class="character-card" onclick="location.href='mage.html'">
+        <img src="mage.png" alt="術士">
+        <h3>術士</h3>
+    </div>
+    <div class="character-card" onclick="location.href='sage.html'">
+        <img src="sage.png" alt="賢者">
+        <h3>賢者</h3>
+    </div>
+</div>
+</section>
 
     <!-- 重要情報一覽 -->
     <section id="dungeon-table">
@@ -307,29 +386,6 @@ function copyLink() {
     }
 </style>
 
-    <!-- 職業區 -->
-<section id="characters">
-    <h2>六轉職業</h2>
-    <div class="characters">
-    <div class="character-card" onclick="location.href='fighter.html'">
-        <img src="fighter.png" alt="鬥士">
-        <h3>鬥士</h3>
-    </div>
-    <div class="character-card" onclick="location.href='knight.html'">
-        <img src="knight.png" alt="騎士">
-        <h3>騎士</h3>
-    </div>
-    <div class="character-card" onclick="location.href='mage.html'">
-        <img src="mage.png" alt="術士">
-        <h3>術士</h3>
-    </div>
-    <div class="character-card" onclick="location.href='sage.html'">
-        <img src="sage.png" alt="賢者">
-        <h3>賢者</h3>
-    </div>
-</div>
-</section>
-    
     <!-- 攻略內容區 -->
     <section id="guide">
         <h2>技能轉換表</h2>
@@ -344,4 +400,3 @@ function copyLink() {
 
 </body>
 </html>
-
