@@ -112,7 +112,7 @@ footer {
 
     select {
         width: 100%;
-        font-size: 18px;   /* 手機字體稍小但仍大 */
+        font-size: 16px;   /* 手機字體稍小但仍大 */
     }
 }
 
@@ -132,6 +132,38 @@ p {
     <img src="sage2.png" alt="賢者橫幅">
     <h1>賢者攻略</h1>
 </header>
+
+<!-- 微信小程序區 -->
+<section id="wechat" style="margin-top:40px;">
+    <h2>微信小程序</h2>
+    <p>好用的微信小程序：</p>
+    <!-- 小程序截圖，原始大小顯示 -->
+    <img src="wc.png" alt="杖剑工具小程序截圖" 
+     style="max-width:300px; width:100%; height:auto; border-radius:10px; display:block; margin-bottom:10px;">
+    
+    <input type="text" value="#小程序://杖剑工具/tENlVKzlpKZiuPh" id="wechatLink" readonly
+           style="width:300px; padding:5px; border-radius:5px; border:none; background-color:#333; color:#fff;">
+    <button onclick="copyLink()" 
+            style="margin-left:10px; padding:5px 10px; border:none; border-radius:5px; background-color:#4af; color:#000; cursor:pointer;">
+        一鍵複製
+    </button>
+    <p style="color:#aaa; font-size:0.9rem; margin-top:5px;">
+        點「一鍵複製」後，打開微信 → 在搜索欄粘貼即可使用小程序。
+    </p>
+</section>
+
+<script>
+function copyLink() {
+    const copyText = document.getElementById("wechatLink");
+    copyText.select();
+    copyText.setSelectionRange(0, 99999); // 手機適用
+    navigator.clipboard.writeText(copyText.value).then(() => {
+        alert("鏈接已複製！");
+    }).catch(() => {
+        alert("複製失敗，請手動複製。");
+    });
+}
+</script>
 
 <section class="skills-links">
     <h2>六轉技能介紹</h2>
@@ -208,17 +240,15 @@ p {
         <img src="pvp1.png" alt="PVP直傷">
 
         <p>4v4</p>
-        <img src="pvp1.1.png" alt="PVP侵蝕">
-        
+        <img src="pvp1.1.png" alt="PVP直傷">
+        <img src="pvp1.2.png" alt="PVP直傷">
+
         <a href="https://discord.com/channels/1425185785597919316/1469712249357603074" target="_blank">
         點擊瀏覽別的搭配
         </a>
     </div>
 
     <div id="pvp2" class="combo-content">
-        <p>4v4</p>
-        <img src="pvp1.2.png" alt="PVP直傷">
-        
         <a href="https://discord.com/channels/1425185785597919316/1469712370258411531" target="_blank">
         點擊瀏覽
         </a>
@@ -280,7 +310,3 @@ function showCombo() {
 
 </body>
 </html>
-
-
-
-
