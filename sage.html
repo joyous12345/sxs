@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<title>賢者攻略 - 哈帕迪攻略</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: "Microsoft JhengHei", sans-serif;
+    background-color: #111;
+    color: #fff;
+    padding: 20px 10%;
+}
+
+/* Header */
+header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+header img {
+    width: 100%;
+    max-height: 60vh;
+    object-fit: cover;
+    border-radius: 10px;
+}
+header h1 {
+    margin-top: 20px;
+}
+
+/* 技能區 */
+.skills-links a {
+    color: #4af;
+    text-decoration: underline;
+}
+
+/* FAQ 區 */
+details {
+    background-color: #222;
+    padding: 12px 15px;
+    margin-bottom: 12px;
+    border-radius: 6px;
+}
+details summary {
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* FAQ 圖片縮小 */
+.faq img {
+    width: 65%;
+    max-width: 420px;
+    display: block;
+    margin: 12px auto;
+    border-radius: 6px;
+}
+
+/* 技能搭配區 */
+select {
+    padding: 10px 12px;    /* 增加內距 */
+    font-size: 18px;       /* 字體放大 */
+    background-color: #222;
+    color: #fff;
+    border: 1px solid #444;
+    border-radius: 6px;
+    width: 250px;           /* 寬度加大 */
+}
+
+/* combo-content */
+.combo-content {
+    display: none;
+    margin-top: 20px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+.combo-content.active {
+    display: block;
+    opacity: 1;
+}
+
+/* 技能搭配圖片縮小 */
+.combo-content img {
+    width: 70%;
+    max-width: 500px;
+    height: auto;
+    display: block;
+    margin: 12px auto;
+    border-radius: 8px;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    margin-top: 40px;
+    color: #888;
+}
+
+/* 手機螢幕優化 */
+@media (max-width: 768px) {
+    body {
+        padding: 10px 5%;
+    }
+
+    header img {
+        max-height: 30vh;
+    }
+
+    .faq img, .combo-content img {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    select {
+        width: 100%;
+        font-size: 16px;   /* 手機字體稍小但仍大 */
+    }
+}
+
+h2 {
+    margin-top: 40px;
+    margin-bottom: 15px;
+}
+p {
+    line-height: 1.5;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <img src="sage2.png" alt="賢者橫幅">
+    <h1>賢者攻略</h1>
+</header>
+
+<!-- 微信小程序區 -->
+<section id="wechat" style="margin-top:40px;">
+    <h2>微信小程序</h2>
+    <p>好用的微信小程序：</p>
+    <!-- 小程序截圖，原始大小顯示 -->
+    <img src="wc.png" alt="杖剑工具小程序截圖" 
+     style="max-width:300px; width:100%; height:auto; border-radius:10px; display:block; margin-bottom:10px;">
+    
+    <input type="text" value="#小程序://杖剑工具/tENlVKzlpKZiuPh" id="wechatLink" readonly
+           style="width:300px; padding:5px; border-radius:5px; border:none; background-color:#333; color:#fff;">
+    <button onclick="copyLink()" 
+            style="margin-left:10px; padding:5px 10px; border:none; border-radius:5px; background-color:#4af; color:#000; cursor:pointer;">
+        一鍵複製
+    </button>
+    <p style="color:#aaa; font-size:0.9rem; margin-top:5px;">
+        點「一鍵複製」後，打開微信 → 在搜索欄粘貼即可使用小程序。
+    </p>
+</section>
+
+<script>
+function copyLink() {
+    const copyText = document.getElementById("wechatLink");
+    copyText.select();
+    copyText.setSelectionRange(0, 99999); // 手機適用
+    navigator.clipboard.writeText(copyText.value).then(() => {
+        alert("鏈接已複製！");
+    }).catch(() => {
+        alert("複製失敗，請手動複製。");
+    });
+}
+</script>
+
+<section class="skills-links">
+    <h2>六轉技能介紹</h2>
+    <a href="https://mp.weixin.qq.com/s/BhrWOUiJPjf1ewOwLzt_Pw" target="_blank">點擊瀏覽</a>
+</section>
+
+<section class="faq">
+    <h2>QNA</h2>
+
+    <details>
+        <summary>六轉技能投資</summary>
+        <img src="touzi.png" alt="">
+        <img src="jineng.png" alt="">
+        <a href="https://mp.weixin.qq.com/s/xSNSGpZyi124yr6-zxk0Cg" target="_blank">更多詳情</a>
+    </details>
+
+    <details>
+        <summary>海皇 or 暗影？</summary>
+        <p>
+        同品質情況下暗影加暗親傷害更高。
+        如果海皇品質更高可考慮海皇。
+        <a href="https://b23.tv/KsHpqhp" target="_blank">出處</a>
+        </p>
+    </details>
+
+    <details>
+        <summary>真言審判 or 咒術爆破？</summary>
+        <img src="shenpan.png" alt="">
+        <img src="shenpan2.png" alt="">
+    </details>
+
+    <details>
+        <summary>侵蝕？混傷？直傷？</summary>
+        <img src="Q3.png" alt="">
+        <img src="qinshi.png" alt="">
+    </details>
+
+    <details>
+        <summary>關於炎龍</summary>
+        <img src="yanlong.png" alt="">
+    </details>
+</section>
+
+<section>
+    <h2>技能搭配</h2>
+
+    <label for="comboSelect">選擇模式：</label>
+    <select id="comboSelect" onchange="showCombo()">
+        <option value="pve1" selected>PVE（直傷）</option>
+        <option value="pve2">PVE（侵蝕）</option>
+        <option value="pvp1">PVP（直傷）</option>
+        <option value="pvp2">PVP（侵蝕）</option>
+        <option value="sup">奶媽</option>
+        <option value="sum">召喚</option>
+        <option value="boss">混沌（凹傷）</option>
+        <option value="boss2">混沌（輔助）</option>
+    </select>
+
+    <div id="pve1" class="combo-content active">
+        <img src="pve1.png" alt="PVE直傷">
+        <a href="https://discord.com/channels/1425185785597919316/1469712306425430220" target="_blank">
+        點擊瀏覽別的搭配
+        </a>
+    </div>
+
+    <div id="pve2" class="combo-content">
+        <a href="https://discord.com/channels/1425185785597919316/1469712451699216504" target="_blank">
+        點擊瀏覽
+        </a>
+    </div>
+
+    <div id="pvp1" class="combo-content">
+        <p>競技場</p>
+        <img src="pvp1.png" alt="PVP直傷">
+
+        <p>4v4</p>
+        <img src="pvp1.1.png" alt="PVP直傷">
+        <img src="pvp1.2.png" alt="PVP直傷">
+
+        <a href="https://discord.com/channels/1425185785597919316/1469712249357603074" target="_blank">
+        點擊瀏覽別的搭配
+        </a>
+    </div>
+
+    <div id="pvp2" class="combo-content">
+        <a href="https://discord.com/channels/1425185785597919316/1469712370258411531" target="_blank">
+        點擊瀏覽
+        </a>
+    </div>
+
+    <div id="sup" class="combo-content">
+        <a href="https://discord.com/channels/1425185785597919316/1469712635506462811" target="_blank">
+        點擊瀏覽
+        </a>
+    </div>
+
+    <div id="sum" class="combo-content">
+        <a href="https://discord.com/channels/1425185785597919316/1469712559136313444" target="_blank">
+        點擊瀏覽 PVE 搭配
+        </a>
+        <br><br>
+        <a href="https://discord.com/channels/1425185785597919316/1469712521480114351" target="_blank">
+        點擊瀏覽 PVP 搭配
+        </a>
+
+        <p>來自召喚玩家體驗：</p>
+        <img src="sum.png" alt="召喚建議">
+        <img src="sum2.png" alt="召喚建議">
+        <img src="sage3.jpg" alt="sage">
+    </div>
+
+    <div id="boss" class="combo-content">
+        <p>凹傷</p>
+        <img src="boss.png" alt="混沌">
+        <img src="boss2.png" alt="混沌">
+        <img src="boss3.png" alt="混沌">
+        <p> 注：雙人時終結換暗星 </p>
+    </div>
+
+    <div id="boss2" class="combo-content">
+        <p>輔助</p>
+        <img src="boss4.png" alt="混沌">
+        <img src="boss5.png" alt="混沌">
+    </div>
+
+</section>
+
+<footer>
+    © 2026
+</footer>
+
+<script>
+function showCombo() {
+    let value = document.getElementById("comboSelect").value;
+    let sections = document.querySelectorAll(".combo-content");
+
+    sections.forEach(section => {
+        section.classList.remove("active");
+    });
+
+    document.getElementById(value).classList.add("active");
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>仗劍傳說：坎斯汀之約 - 哈帕迪攻略</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: "PingFang TC", "Microsoft JhengHei", sans-serif;
+            background-color: #111;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            position: relative;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        header img {
+            width: 100%;
+            height: 60vh;
+            object-fit: cover;
+            filter: brightness(0.7);
+        }
+
+        .hero-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            margin-bottom: 20px;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.9);
+            letter-spacing: 2px;
+        }
+
+        .novel-btn {
+            padding: 12px 45px;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 50px;
+            background: linear-gradient(45deg, #4af, #8ef);
+            color: #000;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .novel-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 25px rgba(0,170,255,0.6);
+        }
+
+        section {
+            padding: 50px 8%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            border-left: 6px solid #4af;
+            padding-left: 15px;
+            display: inline-block;
+        }
+
+        /* 職業卡片區 */
+        .characters {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+        }
+
+        .character-card {
+            background-color: #222;
+            padding: 15px;
+            border-radius: 15px;
+            text-align: center;
+            transition: 0.3s;
+            border: 1px solid #333;
+            cursor: pointer;
+        }
+
+        .character-card img {
+            width: 100%;
+            border-radius: 10px;
+            aspect-ratio: 1/1;
+            object-fit: cover;
+            margin-bottom: 10px;
+        }
+
+        .character-card:hover {
+            border-color: #4af;
+            transform: translateY(-8px);
+            background-color: #2a2a2a;
+        }
+
+        /* 表格樣式 */
+        .table-container {
+            overflow-x: auto;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+        }
+
+        table {
+            width: 100%;
+            min-width: 900px;
+            border-collapse: collapse;
+            background-color: #222;
+        }
+
+        th, td {
+            padding: 15px;
+            border: 1px solid #444;
+            text-align: center;
+        }
+
+        th {
+            background-color: #333;
+            color: #4af;
+            font-weight: bold;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #1a1a1a;
+        }
+
+        tbody tr:hover {
+            background-color: #3a3a3a;
+        }
+
+        .countdown-active {
+            color: #ffcc00;
+            font-weight: bold;
+        }
+
+        /* 攻略圖 */
+        .guide-img {
+            max-width: 100%;
+            border-radius: 12px;
+            border: 1px solid #444;
+        }
+
+        footer {
+            padding: 40px;
+            text-align: center;
+            color: #666;
+            border-top: 1px solid #333;
+            margin-top: 50px;
+        }
+
+        @media (max-width: 768px) {
+            section { padding: 30px 5%; }
+        }
+
+        /* 彩蛋表情樣式 */
+        #easter-egg-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            cursor: pointer;
+            z-index: 3000;
+            transition: transform 0.3s;
+        }
+        #easter-egg-btn:hover { transform: scale(1.2); }
+
+        /* 驚喜彈出視窗 */
+        #surprise-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 4000;
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background: #282828;
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+            position: relative;
+        }
+        .modal-content img {
+            max-width: 100%;
+            max-height: 70vh;
+            object-fit: contain;
+            border: 2px solid #4af;
+            border-radius: 8px;
+        }
+        .close-button {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 28px;
+            cursor: pointer;
+            color: #aaa;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <img src="pic/wallpaper.jpg" alt="哈帕迪背景">
+    <div class="hero-content">
+        <h1>哈帕迪攻略</h1>
+        <button class="novel-btn" onclick="location.href='novel.html'">進入小說世界</button>
+    </div>
+</header>
+
+<div class="grid">
+    </div>
+
+<img id="easter-egg-btn" src="pic/feile.png" alt="驚喜表情">
+
+<div id="surprise-modal">
+    <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <h4>恭喜你找到彩蛋！</h4>
+        <img id="surprise-img" src="pic/gengtu1.png" alt="驚喜圖片">
+        <p>這是一個小小的驚喜，感謝你的探索！</p>
+    </div>
+</div>
+
+<section id="characters">
+    <h2>六轉職業指南</h2>
+    <div class="characters">
+        <div class="character-card" onclick="location.href='fighter.html'">
+            <img src="pic/fighter.png" alt="鬥士">
+            <h3>鬥士</h3>
+        </div>
+        <div class="character-card" onclick="location.href='knight.html'">
+            <img src="pic/knight.png" alt="騎士">
+            <h3>騎士</h3>
+        </div>
+        <div class="character-card" onclick="location.href='mage.html'">
+            <img src="pic/mage.png" alt="術士">
+            <h3>術士</h3>
+        </div>
+        <div class="character-card" onclick="location.href='sage.html'">
+            <img src="pic/sage.png" alt="賢者">
+            <h3>賢者</h3>
+        </div>
+    </div>
+</section>
+
+<section id="dungeon-table">
+    <h2>重要情報一覽</h2>
+    <div class="table-container">
+        <table id="eventTable">
+            <thead>
+                <tr>
+                    <th>日期</th>
+                    <th>天數</th>
+                    <th>倒數</th>
+                    <th>副本/項目</th>
+                    <th>普通</th>
+                    <th>困難</th>
+                    <th>惡夢</th>
+                    <th>煉獄</th>
+                </tr>
+            </thead>
+            <tbody>
+    <tr>
+        <td class="date-cell">2026/02/23</td>
+        <td>212</td>
+        <td class="countdown"></td>
+        <td>奇巧鐘樓 / 幻獸同調</td>
+        <td>-</td>
+        <td>2700萬</td>
+        <td>X</td>
+        <td>X</td>
+    </tr>
+
+    <tr>
+        <td class="date-cell">2026/03/08</td>
+        <td>225</td>
+        <td class="countdown"></td>
+        <td>樂園海盜船</td>
+        <td>3500萬</td>
+        <td>4800萬</td>
+        <td>5700萬</td>
+        <td>8400萬</td>
+    </tr>
+    <tr>
+        <td class="date-cell">2026/03/09</td>
+        <td>226</td>
+        <td class="countdown"></td>
+        <td>賽季新地圖開放</td>
+        <td>-</td>
+        <td>-</td>
+        <td>-</td>
+        <td>-</td>
+    </tr>
+    <tr>
+        <td class="date-cell">2026/03/22</td>
+        <td>239</td>
+        <td class="countdown"></td>
+        <td>海皇潛艇</td>
+        <td>6200萬</td>
+        <td>7200萬</td>
+        <td>8700萬</td>
+        <td>1.3億</td>
+    </tr>
+    <tr>
+        <td class="date-cell">2026/03/25</td>
+        <td>272</td>
+        <td class="countdown"></td>
+        <td>哈帕迪古遺物：第二池塘</td>
+        <td>-</td>
+        <td>-</td>
+        <td>-</td>
+        <td>-</td>
+    </tr>
+
+    <tr>
+        <td class="date-cell">2026/04/05</td>
+        <td>253</td>
+        <td class="countdown"></td>
+        <td>發條要塞</td>
+        <td>9100萬</td>
+        <td>1.1億</td>
+        <td>1.35億</td>
+        <td>1.9億</td>
+    </tr>
+    <tr>
+        <td class="date-cell">2026/04/19</td>
+        <td>267</td>
+        <td class="countdown"></td>
+        <td>天象觀測站</td>
+        <td>1.45億</td>
+        <td>1.75億</td>
+        <td>2.1億</td>
+        <td>3.05億</td>
+    </tr>
+    <tr>
+        <td class="date-cell">2026/04/24</td>
+        <td>242</td>
+        <td class="countdown"></td>
+        <td>哈帕迪古遺物：第三池塘</td>
+        <td>-</td>
+        <td>-</td>
+        <td>-</td>
+        <td>-</td>
+    </tr>
+
+    <tr>
+        <td class="date-cell">2026/05/03</td>
+        <td>281</td>
+        <td class="countdown"></td>
+        <td>泰坦樂氣球</td>
+        <td>2.2億</td>
+        <td>2.65億</td>
+        <td>3.15億</td>
+        <td>4.65億</td>
+    </tr>
+    <tr>
+        <td class="date-cell">2026/05/17</td>
+        <td>295</td>
+        <td class="countdown"></td>
+        <td>星空之城</td>
+        <td>3.3億</td>
+        <td>3.85億</td>
+        <td>4.75億</td>
+        <td>7.85億</td>
+    </tr>
+</tbody>
+        </table>
+    </div>
+    <p style="margin-top:20px; text-align:center;">
+        <a href="https://www.taptap.cn/moment/761801474576482900" target="_blank" style="color:#4af; text-decoration:none;">🔗 查看 TapTap 完整副本詳情</a>
+    </p>
+</section>
+
+<section id="guide">
+    <h2>技能轉換表</h2>
+    <p style="margin-bottom:15px; color:#aaa;">提示：紅色圈圈標記為各職業的核心技能。</p>
+    <img src="pic/skill.png" alt="技能轉換表" class="guide-img">
+</section>
+
+<footer>
+    © 2026 仗劍傳說攻略站 | 坎斯汀之約
+</footer>
+
+<script>
+// 自動計算倒數計時腳本
+function updateCountdowns() {
+    const rows = document.querySelectorAll("#eventTable tbody tr");
+    const today = new Date();
+    today.setHours(0, 0, 0, 0); // 歸零時分秒，只比較日期
+
+    rows.forEach(row => {
+        const dateCell = row.querySelector(".date-cell");
+        const countdownCell = row.querySelector(".countdown");
+        
+        if (dateCell && countdownCell) {
+            const targetDate = new Date(dateCell.innerText);
+            
+            if (!isNaN(targetDate)) {
+                const diffTime = targetDate - today;
+                const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+                
+                if (diffDays > 0) {
+                    countdownCell.innerText = ` ${diffDays} 天`;
+                } else if (diffDays === 0) {
+                    countdownCell.innerText = "★ 今日開啟 ★";
+                    countdownCell.classList.add("countdown-active");
+                } else {
+                    countdownCell.innerText = "已過期";
+                    countdownCell.style.color = "#555";
+                }
+            }
+        }
+    });
+}
+
+// --- 彩蛋隨機圖片邏輯 ---
+    const easterEggBtn = document.getElementById("easter-egg-btn");
+    const surpriseModal = document.getElementById("surprise-modal");
+    const surpriseImg = document.getElementById("surprise-img");
+    const closeModal = surpriseModal.querySelector(".close-button");
+
+    const randomImages = [
+        "pic/gengtu1.png",
+        "pic/gengtu2.png",
+        "pic/gengtu3.png",
+        "pic/gengtu4.png",
+        "pic/gengtu5.png",
+        "pic/gengtu6.png",
+        "pic/gengtu7.png",
+        "pic/gengtu8.png"
+    ];
+
+    easterEggBtn.onclick = () => {
+        const randomIndex = Math.floor(Math.random() * randomImages.length);
+        surpriseImg.src = randomImages[randomIndex];
+        surpriseModal.style.display = "flex";
+        document.body.style.overflow = "hidden";
+    };
+
+    closeModal.onclick = () => {
+        surpriseModal.style.display = "none";
+        document.body.style.overflow = "auto";
+    };
+
+    surpriseModal.onclick = (e) => {
+        if(e.target === surpriseModal) closeModal.onclick();
+    };
+
+window.onload = updateCountdowns;
+</script>
+
+</body>
+</html>

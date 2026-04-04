@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>混沌配招展示 - 仗劍傳說</title>
+
+    <style>
+        body {
+            font-family: "PingFang TC", "Microsoft JhengHei", sans-serif;
+            margin: 0;
+            background: #111;
+            color: #eee;
+        }
+
+        header {
+            background: linear-gradient(to bottom, #333, #111);
+            color: #4af;
+            text-align: center;
+            padding: 20px;
+            border-bottom: 1px solid #444;
+        }
+
+        /* 篩選選單 */
+        .menu {
+            text-align: center;
+            background: #222;
+            padding: 15px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid #333;
+        }
+
+        select {
+            padding: 8px 12px;
+            margin: 5px;
+            border-radius: 6px;
+            background: #333;
+            color: white;
+            border: 1px solid #555;
+            outline: none;
+        }
+
+        .menu button {
+            padding: 8px 15px;
+            margin-left: 10px;
+            border: none;
+            background: #4af;
+            color: #000;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .menu button:hover {
+            background: #8ef;
+            box-shadow: 0 0 10px rgba(0, 170, 255, 0.5);
+        }
+
+        /* 網格佈局 */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            padding: 20px;
+            max-width: 1400px;
+            margin: auto;
+        }
+
+        /* 職業分類樣式 */
+        .box {
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            transition: transform 0.2s;
+            background: #1e1e1e;
+        }
+
+        .box:hover {
+            transform: translateY(-5px);
+        }
+
+        .warlock { border-top: 4px solid #59a0b6; }
+        .sage { border-top: 4px solid #2ecc71; }
+        .fighter { border-top: 4px solid #e74c3c; }
+        .knight { border-top: 4px solid #f1c40f; }
+
+        .box h3 {
+            margin-top: 0;
+            font-size: 1.2rem;
+            color: #fff;
+        }
+
+        .box img {
+            width: 100%;
+            height: auto;
+            display: block;
+            margin: 10px auto;
+            border-radius: 6px;
+            cursor: zoom-in;
+            border: 1px solid #333;
+        }
+
+        .source {
+            font-size: 13px;
+            color: #aaa;
+            margin-top: 10px;
+            background: rgba(0,0,0,0.2);
+            padding: 5px;
+            border-radius: 4px;
+        }
+
+        .source a {
+            color: #4af;
+            text-decoration: underline;
+            font-weight: bold;
+        }
+
+        .source a:hover { color: #8ef; }
+
+        .hidden {
+            display: none;
+        }
+
+        /* 獨立燈箱 (Lightbox) */
+        #lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 2000;
+            cursor: zoom-out;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+            box-shadow: 0 0 30px rgba(0,0,0,0.5);
+            border: 2px solid #4af;
+            border-radius: 8px;
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+
+        #lightbox.active {
+            display: flex;
+        }
+
+        #lightbox.active img {
+            transform: scale(1);
+        }
+
+        @media(max-width:600px){
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* --- 新增：彩蛋表情樣式 --- */
+        #easter-egg-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            cursor: pointer;
+            z-index: 3000; /* 確保浮在最上層，比 lightbox (2000) 高 */
+            transition: transform 0.3s;
+        }
+        #easter-egg-btn:hover { transform: scale(1.2); }
+
+        /* --- 新增：驚喜彈出視窗 (Modal) 樣式 --- */
+        #surprise-modal {
+            display: none; /* 預設隱藏 */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8); /* 半透明背景 */
+            z-index: 4000; /* 比彩蛋按鈕更高 */
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: #282828;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.7);
+            text-align: center;
+            position: relative;
+            max-width: 400px;
+            transform: scale(0.8);
+            opacity: 0;
+            transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+        }
+
+        #surprise-modal.active .modal-content {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        .modal-content img {
+            max-width: 100%;
+            max-height: 70vh; /* 限制最高高度，確保彈窗不會超出螢幕 */
+            object-fit: contain; /* 保持圖片比例，不變形 */
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border: 2px solid #4af;
+        }
+
+        .modal-content h4 {
+            color: #4af;
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-size: 1.4rem;
+        }
+
+        .modal-content p {
+            color: #ccc;
+            line-height: 1.6;
+        }
+
+        .close-button {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 28px;
+            color: #aaa;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+        .close-button:hover { color: #fff; }
+
+        @media(max-width:600px){
+            .grid { grid-template-columns: 1fr; }
+            .modal-content { max-width: 90%; padding: 15px; }
+            .close-button { font-size: 24px; top: 5px; right: 10px; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>混沌配招展示</h1>
+</header>
+
+<div class="grid">
+    </div>
+
+<img id="easter-egg-btn" src="pic/feile.png" alt="驚喜表情">
+
+<div id="surprise-modal">
+    <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <h4>恭喜你找到彩蛋！</h4>
+        <img id="surprise-img" src="pic/gengtu1.png" alt="驚喜圖片">
+        <p>這是一個小小的驚喜，感謝你的探索！</p>
+    </div>
+</div>
+
+<div class="menu">
+    <select id="job">
+        <option value="all">全部職業</option>
+        <option value="warlock">術士</option>
+        <option value="sage">賢者</option>
+        <option value="fighter">鬥士</option>
+        <option value="knight">騎士</option>
+    </select>
+
+    <select id="type">
+        <option value="all">全部類型</option>
+        <option value="atk">攻擊</option>
+        <option value="sup">輔助</option>
+    </select>
+
+    <button id="clear">清除重置</button>
+</div>
+
+<div id="lightbox">
+    <img src="" alt="放大展示圖">
+</div>
+
+<div class="grid">
+    <div class="box warlock" data-job="warlock" data-type="atk">
+        <h3>果盤</h3>
+        <img src="pic/magehundunatk.png">
+        <p class="source">出處：<a href="https://mp.weixin.qq.com/s/1b0fy6rsYxPBUUTZISyilg" target="_blank">杖劍攻略站</a></p>
+    </div>
+
+    <div class="box warlock" data-job="warlock" data-type="atk">
+        <h3>火光</h3>
+        <img src="pic/magehundunatk2.png">
+        <p class="source">出處：<a href="https://mp.weixin.qq.com/s/1b0fy6rsYxPBUUTZISyilg" target="_blank">杖劍攻略站</a></p>
+    </div>
+
+    <div class="box sage" data-job="sage" data-type="atk">
+        <h3>混侵</h3>
+        <img src="pic/sagehundunatk.png">
+        <p class="source">出處：<a href="https://discord.com/channels/1215600132003725353/1400754489086050384/1480066961537892393" target="_blank">柴柴Shiba</a></p>
+    </div>
+
+    <div class="box fighter" data-job="fighter" data-type="atk">
+        <h3>混傷</h3>
+        <img src="pic/fighterhundunatk.png">
+        <p class="source">出處：<a href="https://cdn.discordapp.com/attachments/1465843644421374286/1480055857407463525/39de764df77cdb83e19eff310fb28471_720.png" target="_blank">楓琴柚</a></p>
+    </div>
+
+    <div class="box knight" data-job="knight" data-type="atk">
+        <h3>混傷</h3>
+        <img src="pic/knighthundunatk1.png">
+        <p class="source">出處：<a href="https://www.bilibili.com/video/BV1zizDBMEP7/" target="_blank">艾露西娅ALucia</a></p>
+    </div>
+
+    <div class="box knight" data-job="knight" data-type="atk">
+        <h3>炸盾1</h3>
+        <img src="pic/knighthundunatk2.png">
+        <p class="source">出處：<a href="https://www.bilibili.com/video/BV1zizDBMEP7/" target="_blank">艾露西娅ALucia</a></p>
+    </div>
+
+    <div class="box knight" data-job="knight" data-type="atk">
+        <h3>炸盾2</h3>
+        <img src="pic/knighthundunatk3.png">
+        <p class="source">出處：<a href="https://www.bilibili.com/video/BV1zizDBMEP7/" target="_blank">艾露西娅ALucia</a></p>
+    </div>
+
+    <div class="box warlock" data-job="warlock" data-type="sup">
+        <h3>通用輔助</h3>
+        <img src="pic/magehundunsup.png">
+        <p class="source">出處：<a href="https://mp.weixin.qq.com/s/1b0fy6rsYxPBUUTZISyilg" target="_blank">杖劍攻略站</a></p>
+    </div>
+
+    <div class="box sage" data-job="sage" data-type="sup">
+        <h3>通用輔助</h3>
+        <img src="pic/sagehundunsup1.png">
+        <p class="source">出處：<a href="https://discord.com/channels/1215600132003725353/1400754489086050384/1480202401456717915" target="_blank">官方DC大佬們</a></p>
+    </div>
+
+    <div class="box sage" data-job="sage" data-type="sup">
+        <h3>賢者輔助</h3>
+        <img src="pic/sagehundunsup2.png">
+        <p class="source">出處：<a href="https://discord.com/channels/1215600132003725353/1400754489086050384/1480202184774647840" target="_blank">官方DC大佬們</a></p>
+    </div>
+
+    <div class="box sage" data-job="sage" data-type="sup">
+        <h3>炸盾輔助1</h3>
+        <img src="pic/sagehundunsup3.png">
+        <p class="source">出處：<a href="https://discord.com/channels/1215600132003725353/1400754442130690148/1480135616237928479" target="_blank">雪雪在哪兒</a></p>
+    </div>
+
+    <div class="box sage" data-job="sage" data-type="sup">
+        <h3>炸盾輔助2</h3>
+        <img src="pic/sagehundunsup3.png">
+        <p class="source">出處：<a href="https://discord.com/channels/1215600132003725353/1400754442130690148/1480135616237928479" target="_blank">雪雪在哪兒</a></p>
+    </div>
+
+    <div class="box fighter" data-job="fighter" data-type="sup">
+        <h3>炸盾輔助</h3>
+        <img src="pic/fighterhundunsup2.jpg">
+        <p class="source">出處：<a href="https://discord.com/channels/1215600132003725353/1400754442130690148/1480101576445132890" target="_blank">官方DC的大佬們</a></p>
+    </div>
+
+    <div class="box fighter" data-job="fighter" data-type="sup">
+        <h3>通用輔助</h3>
+        <img src="pic/fighterhundunsup.png">
+        <p class="source">出處：<a href="https://cdn.discordapp.com/attachments/1465843644421374286/1480055713228259348/b9e313a5cff5644361f6db142877fecc_720.png" target="_blank">楓琴柚</a></p>
+    </div>
+
+    <div class="box knight" data-job="knight" data-type="sup">
+        <h3>通用輔助</h3>
+        <img src="pic/knighthundunsup.png">
+        <p class="source">出處：<a href="https://www.bilibili.com/video/BV1zizDBMEP7/" target="_blank">艾露西娅ALucia</a></p>
+    </div>
+</div>
+
+<script>
+    console.log("腳本已載入");
+
+    // 統一宣告變數
+    const jobSelect = document.getElementById("job");
+    const typeSelect = document.getElementById("type");
+    const clearBtn = document.getElementById("clear");
+    const boxes = document.querySelectorAll(".box");
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImg = lightbox.querySelector("img");
+    const easterEggBtn = document.getElementById("easter-egg-btn");
+    const surpriseModal = document.getElementById("surprise-modal");
+    const surpriseImg = document.getElementById("surprise-img"); // 確保你的 HTML 裡 img 有這個 id
+    const closeModal = surpriseModal.querySelector(".close-button");
+
+    // 1. 篩選功能
+    function filter() {
+        const job = jobSelect.value, type = typeSelect.value;
+        boxes.forEach(box => {
+            const m = (job === "all" || box.dataset.job === job) && (type === "all" || box.dataset.type === type);
+            box.classList.toggle("hidden", !m);
+        });
+    }
+    jobSelect.onchange = typeSelect.onchange = filter;
+    clearBtn.onclick = () => { jobSelect.value = typeSelect.value = "all"; filter(); };
+
+    // 2. 圖片燈箱
+    boxes.forEach(box => box.querySelector("img").onclick = () => {
+        lightboxImg.src = box.querySelector("img").src;
+        lightbox.classList.add("active");
+        document.body.style.overflow = "hidden";
+    });
+    lightbox.onclick = () => { lightbox.classList.remove("active"); document.body.style.overflow = "auto"; };
+
+    // 3. 彩蛋邏輯 (修正了陣列逗號語法)
+    const randomImages = [
+        "pic/gengtu1.png",
+        "pic/gengtu2.png",
+        "pic/gengtu3.png",
+        "pic/gengtu4.png",
+        "pic/gengtu5.png",
+        "pic/gengtu6.png",
+        "pic/gengtu7.png",
+        "pic/gengtu8.png",
+        "pic/gengtu9.png",
+        "pic/gengtu10.png",
+        "pic/gengtu11.png",
+        "pic/gengtu12.png"
+    ];
+
+    easterEggBtn.onclick = () => {
+        const randomIndex = Math.floor(Math.random() * randomImages.length);
+        surpriseImg.src = randomImages[randomIndex];
+        
+        surpriseModal.style.display = "flex";
+        setTimeout(() => surpriseModal.classList.add("active"), 10);
+        document.body.style.overflow = "hidden";
+    };
+
+    closeModal.onclick = () => {
+        surpriseModal.classList.remove("active");
+        setTimeout(() => surpriseModal.style.display = "none", 300);
+        document.body.style.overflow = "auto";
+    };
+    
+    surpriseModal.onclick = (e) => {
+        if(e.target === surpriseModal) closeModal.onclick();
+    };
+</script>
+</body>
+</html>
