@@ -91,7 +91,6 @@ select {
     border-radius: 6px;
     cursor: zoom-in;
     border: 1px solid #333;
-    content-visibility: auto;
 }
 
 .source {
@@ -145,7 +144,6 @@ select {
     transition: transform 0.15s ease;
     cursor: zoom-in;
     transform-origin: center center;
-    will-change: transform;
 }
 
 #easter-egg-btn {
