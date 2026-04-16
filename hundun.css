@@ -1,244 +1,420 @@
+/* ===== 基本 ===== */
 body {
-    font-family: "PingFang TC", "Microsoft JhengHei", sans-serif;
-    margin: 0;
-    background: #111;
-    color: #eee;
+  font-family: "PingFang TC", "Microsoft JhengHei", sans-serif;
+  margin: 0;
+  background: #181818;
+  color: #eee;
 }
 
+/* ===== Header ===== */
 header {
-    background: linear-gradient(to bottom, #333, #111);
-    color: #4af;
-    text-align: center;
-    padding: 20px;
-    border-bottom: 1px solid #444;
+  background: linear-gradient(to bottom, #333, #111);
+  color: #4af;
+  text-align: center;
+  padding: 20px;
+  border-bottom: 1px solid #444;
 }
 
+/* ===== 篩選選單 ===== */
 .menu {
-    text-align: center;
-    background: #222;
-    padding: 15px;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    border-bottom: 1px solid #333;
+  text-align: center;
+  background: #222;
+  padding: 15px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1px solid #333;
 }
 
 select {
-    padding: 8px 12px;
-    margin: 5px;
-    border-radius: 6px;
-    background: #333;
-    color: white;
-    border: 1px solid #555;
-    outline: none;
+  padding: 8px 12px;
+  margin: 5px;
+  border-radius: 6px;
+  background: #333;
+  color: white;
+  border: 1px solid #555;
+  outline: none;
 }
 
 .menu button {
-    padding: 8px 15px;
-    margin-left: 10px;
-    border: none;
-    background: #4af;
-    color: #000;
-    font-weight: bold;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: 0.3s;
+  padding: 8px 15px;
+  margin-left: 10px;
+  border: none;
+  background: #4af;
+  color: #000;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
 .menu button:hover {
-    background: #8ef;
-    box-shadow: 0 0 10px rgba(0, 170, 255, 0.5);
+  background: #8ef;
+  box-shadow: 0 0 10px rgba(0, 170, 255, 0.5);
 }
 
+/* ===== 補充資料區 ===== */
+.menu-extra {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 10px 20px 0;
+}
+
+.menu-extra-title {
+  font-size: 13px;
+  color: #888;
+  margin-bottom: 8px;
+  letter-spacing: 1px;
+}
+
+.menu-extra-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.menu-extra-links a {
+  display: inline-block;
+  font-size: 13px;
+  color: #bbb;
+  text-decoration: none;
+  padding: 5px 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transition: 0.2s ease;
+}
+
+.menu-extra-links a:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+/* ===== 卡片區 ===== */
 .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 20px;
-    padding: 20px;
-    max-width: 1400px;
-    margin: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  max-width: 1400px;
+  margin: auto;
 }
 
 .box {
-    padding: 15px;
-    border-radius: 10px;
-    text-align: center;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    transition: transform 0.2s;
-    background: #1e1e1e;
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s;
+  background: #242424;
 }
 
 .box:hover {
-    transform: translateY(-5px);
+  transform: translateY(-5px);
 }
 
-.warlock { border-top: 4px solid #59a0b6; }
-.sage { border-top: 4px solid #2ecc71; }
-.fighter { border-top: 4px solid #e74c3c; }
-.knight { border-top: 4px solid #f1c40f; }
+.warlock {
+  border-top: 4px solid #59a0b6;
+}
+
+.sage {
+  border-top: 4px solid #2ecc71;
+}
+
+.fighter {
+  border-top: 4px solid #e74c3c;
+}
+
+.knight {
+  border-top: 4px solid #f1c40f;
+}
+
+.exp {
+  border-top: 4px solid #9b59b6;
+}
 
 .box h3 {
-    margin-top: 0;
-    font-size: 1.2rem;
-    color: #fff;
+  margin-top: 0;
+  font-size: 1.2rem;
+  color: #fff;
 }
 
 .box img {
-    width: 100%;
-    height: auto;
-    display: block;
-    margin: 10px auto;
-    border-radius: 6px;
-    cursor: zoom-in;
-    border: 1px solid #333;
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 10px auto;
+  border-radius: 6px;
+  cursor: pointer;
+  border: 1px solid #333;
 }
 
+.box p {
+  line-height: 1.6;
+  margin: 8px 0 0;
+}
+
+/* ===== 出處 / 補充連結 ===== */
 .source {
-    font-size: 13px;
-    color: #aaa;
-    margin-top: 10px;
-    background: rgba(0, 0, 0, 0.2);
-    padding: 5px;
-    border-radius: 4px;
+  font-size: 13px;
+  color: #aaa;
+  margin-top: 10px;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 5px;
+  border-radius: 4px;
 }
 
-.source a {
-    color: #4af;
-    text-decoration: underline;
-    font-weight: bold;
+.source a,
+.img-link {
+  color: #4af;
+  text-decoration: underline;
+  font-weight: bold;
 }
 
-.source a:hover {
-    color: #8ef;
+.source a:hover,
+.img-link:hover {
+  color: #8ef;
 }
 
 .hidden {
-    display: none;
+  display: none;
 }
 
+/* ===== Lightbox ===== */
 #lightbox {
-    display: none;
-    position: fixed;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.95);
-    z-index: 2000;
-    cursor: zoom-out;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 2000;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
 #lightbox.active {
-    display: flex;
+  display: flex;
 }
 
-#lightbox img {
-    max-width: 90%;
-    max-height: 90%;
-    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
-    border: 2px solid #4af;
-    border-radius: 8px;
-    transform: scale(1);
-    transition: transform 0.15s ease;
-    cursor: zoom-in;
-    transform-origin: center center;
+.lightbox-content {
+  display: flex;
+  width: min(1100px, 95vw);
+  max-height: 90vh;
+  background: #1a1a1a;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
 }
 
+.lightbox-left {
+  flex: 1.2;
+  background: #111;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.lightbox-left img {
+  max-width: 100%;
+  max-height: 80vh;
+  border-radius: 8px;
+  border: 2px solid #4af;
+  display: block;
+}
+
+.lightbox-right {
+  flex: 0.8;
+  padding: 24px;
+  color: #eee;
+  overflow-y: auto;
+  position: relative;
+  background: #202020;
+}
+
+.lightbox-right h3 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  padding-right: 30px;
+  color: #4af;
+  font-size: 1.4rem;
+  border-bottom: 1px solid #333;
+}
+
+#lightbox-text {
+  line-height: 1.8;
+  color: #ccc;
+  white-space: pre-line;
+}
+
+#lightbox-text a {
+  color: #4af;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+#lightbox-text a:hover {
+  color: #8ef;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  font-size: 28px;
+  color: #aaa;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.lightbox-close:hover {
+  color: #fff;
+}
+
+/* ===== 彩蛋 ===== */
 #easter-egg-btn {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: 60px;
-    height: 60px;
-    cursor: pointer;
-    z-index: 3000;
-    transition: transform 0.3s;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+  z-index: 3000;
+  transition: transform 0.3s;
 }
 
 #easter-egg-btn:hover {
-    transform: scale(1.2);
+  transform: scale(1.2);
 }
 
 #surprise-modal {
-    display: none;
-    position: fixed;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.8);
-    z-index: 4000;
-    justify-content: center;
-    align-items: center;
+  display: none;
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 4000;
+  justify-content: center;
+  align-items: center;
 }
 
 #surprise-modal.active .modal-content {
-    transform: scale(1);
-    opacity: 1;
+  transform: scale(1);
+  opacity: 1;
 }
 
 .modal-content {
-    background: #282828;
-    padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.7);
-    text-align: center;
-    position: relative;
-    max-width: 400px;
-    transform: scale(0.8);
-    opacity: 0;
-    transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+  background: #282828;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.7);
+  text-align: center;
+  position: relative;
+  max-width: 400px;
+  transform: scale(0.8);
+  opacity: 0;
+  transition:
+    transform 0.3s ease-out,
+    opacity 0.3s ease-out;
 }
 
 .modal-content img {
-    max-width: 100%;
-    max-height: 70vh;
-    object-fit: contain;
-    border-radius: 8px;
-    margin-bottom: 15px;
-    border: 2px solid #4af;
+  max-width: 100%;
+  max-height: 70vh;
+  object-fit: contain;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  border: 2px solid #4af;
 }
 
 .modal-content h4 {
-    color: #4af;
-    margin-top: 0;
-    margin-bottom: 10px;
-    font-size: 1.4rem;
+  color: #4af;
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 1.4rem;
 }
 
 .modal-content p {
-    color: #ccc;
-    line-height: 1.6;
+  color: #ccc;
+  line-height: 1.6;
 }
 
 .close-button {
-    position: absolute;
-    top: 10px;
-    right: 15px;
-    font-size: 28px;
-    color: #aaa;
-    cursor: pointer;
-    transition: color 0.2s;
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 28px;
+  color: #aaa;
+  cursor: pointer;
+  transition: color 0.2s;
 }
 
 .close-button:hover {
-    color: #fff;
+  color: #fff;
+}
+
+/* ===== RWD ===== */
+@media (max-width: 768px) {
+  .lightbox-content {
+    flex-direction: column;
+    width: 95vw;
+    max-height: 90vh;
+  }
+
+  .lightbox-left,
+  .lightbox-right {
+    width: 100%;
+    flex: none;
+  }
+
+  .lightbox-left {
+    padding: 15px;
+  }
+
+  .lightbox-left img {
+    max-height: 45vh;
+  }
+
+  .lightbox-right {
+    padding: 20px;
+  }
 }
 
 @media (max-width: 600px) {
-    .grid {
-        grid-template-columns: 1fr;
-    }
+  .grid {
+    grid-template-columns: 1fr;
+  }
 
-    .modal-content {
-        max-width: 90%;
-        padding: 15px;
-    }
+  .menu-extra {
+    padding: 8px 12px 0;
+  }
 
-    .close-button {
-        font-size: 24px;
-        top: 5px;
-        right: 10px;
-    }
+  .menu-extra-title {
+    font-size: 12px;
+    margin-bottom: 6px;
+  }
+
+  .menu-extra-links {
+    gap: 6px;
+  }
+
+  .menu-extra-links a {
+    font-size: 12px;
+    padding: 4px 8px;
+  }
+
+  .modal-content {
+    max-width: 90%;
+    padding: 15px;
+  }
+
+  .close-button {
+    font-size: 24px;
+    top: 5px;
+    right: 10px;
+  }
 }
