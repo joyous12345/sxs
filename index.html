@@ -1,472 +1,814 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-TW">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>仗劍傳說：坎斯汀之約 - 哈帕迪攻略</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>仗劍傳說：坎斯汀之約 - 伊格尼斯</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Cinzel:wght@600&display=swap"
+      rel="stylesheet"
+    />
 
     <style>
-        body {
-            margin: 0;
-            font-family: "PingFang TC", "Microsoft JhengHei", sans-serif;
-            background-color: #111;
-            color: #fff;
-            line-height: 1.6;
-        }
+      /* ===== 變數 ===== */
+      :root {
+        --bg-base: #0e0f13;
+        --bg-surface: #161820;
+        --bg-card: #1c1e28;
+        --bg-hover: #222434;
+        --border: rgba(255, 255, 255, 0.07);
+        --border-bright: rgba(255, 255, 255, 0.13);
+        --accent: #5b9cf6;
+        --accent-glow: rgba(91, 156, 246, 0.18);
+        --accent-dim: rgba(91, 156, 246, 0.08);
+        --text-primary: #e8eaf0;
+        --text-secondary: #8e92a6;
+        --text-muted: #555a72;
+        --radius-sm: 6px;
+        --radius-md: 10px;
+        --radius-lg: 14px;
+      }
 
-        /* Header */
-        header {
-            position: relative;
-            text-align: center;
-            overflow: hidden;
-        }
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
 
-        header img {
-            width: 100%;
-            height: 60vh;
-            object-fit: cover;
-            filter: brightness(0.7);
-        }
+      body {
+        font-family:
+          "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+        background: var(--bg-base);
+        color: var(--text-primary);
+        min-height: 100vh;
+        line-height: 1.6;
+      }
 
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background-image:
+          radial-gradient(
+            ellipse 80% 50% at 20% -10%,
+            rgba(91, 156, 246, 0.06) 0%,
+            transparent 60%
+          ),
+          radial-gradient(
+            ellipse 60% 40% at 80% 110%,
+            rgba(183, 140, 247, 0.05) 0%,
+            transparent 60%
+          );
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      /* ===== Header ===== */
+      header {
+        position: relative;
+        z-index: 1;
+        overflow: hidden;
+      }
+
+      .hero-img {
+        width: 100%;
+        height: 52vh;
+        object-fit: cover;
+        display: block;
+        filter: brightness(0.45);
+      }
+
+      .hero-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          180deg,
+          transparent 30%,
+          var(--bg-base) 100%
+        );
+      }
+
+      .hero-content {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        text-align: center;
+        padding: 0 20px 40px;
+      }
+
+      .hero-content h1 {
+        font-family: "Cinzel", serif;
+        font-size: clamp(1.8rem, 4vw, 2.8rem);
+        font-weight: 600;
+        letter-spacing: 0.12em;
+        color: var(--text-primary);
+        text-shadow: 0 0 40px rgba(91, 156, 246, 0.4);
+      }
+
+      .hero-content p {
+        margin-top: 8px;
+        font-size: 13px;
+        color: var(--text-muted);
+        letter-spacing: 0.05em;
+      }
+
+      /* ===== 延伸閱讀 ===== */
+      .menu-extra {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 16px 20px;
+        border-bottom: 1px solid var(--border);
+        position: relative;
+        z-index: 1;
+      }
+
+      .menu-extra-title {
+        font-size: 11px;
+        color: var(--text-muted);
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+      }
+
+      .menu-extra-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .menu-extra-links a {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        font-size: 12px;
+        color: var(--text-secondary);
+        text-decoration: none;
+        padding: 5px 12px;
+        border-radius: 999px;
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        transition: all 0.2s;
+      }
+
+      .menu-extra-links a::before {
+        content: "↗";
+        font-size: 10px;
+        opacity: 0.5;
+      }
+
+      .menu-extra-links a:hover {
+        color: var(--accent);
+        border-color: rgba(91, 156, 246, 0.35);
+        background: var(--accent-dim);
+      }
+
+      /* ===== 主要內容 ===== */
+      .main-content {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 32px 20px;
+        position: relative;
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 48px;
+      }
+
+      /* ===== 區塊標題 ===== */
+      .section-divider {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        margin-bottom: 24px;
+      }
+
+      .section-divider-line {
+        flex: 1;
+        height: 1px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--border-bright),
+          transparent
+        );
+      }
+
+      .section-title {
+        font-family: "Cinzel", serif;
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: var(--accent);
+        letter-spacing: 0.1em;
+        text-shadow: 0 0 20px var(--accent-glow);
+        flex-shrink: 0;
+      }
+
+      /* ===== 副本表格 ===== */
+      .table-wrapper {
+        overflow-x: auto;
+        border-radius: var(--radius-lg);
+        border: 1px solid var(--border);
+        background: var(--bg-card);
+      }
+
+      table {
+        width: 100%;
+        min-width: 820px;
+        border-collapse: collapse;
+      }
+
+      th,
+      td {
+        padding: 13px 16px;
+        text-align: center;
+        border-bottom: 1px solid var(--border);
+        font-size: 13.5px;
+      }
+
+      th {
+        background: var(--bg-surface);
+        color: var(--accent);
+        font-weight: 600;
+        font-size: 12px;
+        letter-spacing: 0.05em;
+        white-space: nowrap;
+      }
+
+      tbody tr:last-child td {
+        border-bottom: none;
+      }
+
+      tbody tr:hover {
+        background: var(--bg-hover);
+      }
+
+      .countdown-active {
+        color: #f5c842;
+        font-weight: 700;
+      }
+
+      td.expired {
+        color: var(--text-muted);
+      }
+
+      /* ===== 攻略卡片 ===== */
+      .guide-section {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .guide-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        overflow: hidden;
+        transition:
+          border-color 0.22s,
+          transform 0.22s,
+          box-shadow 0.22s;
+      }
+
+      .guide-card:hover {
+        border-color: var(--border-bright);
+        transform: translateY(-3px);
+        box-shadow: 0 8px 32px rgba(91, 156, 246, 0.08);
+      }
+
+      .guide-card-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 16px 20px;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .guide-card-title {
+        font-size: 15px;
+        font-weight: 700;
+        color: var(--text-primary);
+      }
+
+      .guide-card-desc {
+        font-size: 12px;
+        color: var(--text-muted);
+      }
+
+      .guide-card-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 7px 16px;
+        border-radius: var(--radius-sm);
+        background: var(--accent-dim);
+        border: 1px solid rgba(91, 156, 246, 0.25);
+        color: var(--accent);
+        font-size: 13px;
+        font-weight: 500;
+        text-decoration: none;
+        transition: all 0.2s;
+        white-space: nowrap;
+      }
+
+      .guide-card-link:hover {
+        background: rgba(91, 156, 246, 0.15);
+        border-color: rgba(91, 156, 246, 0.5);
+      }
+
+      /* ===== 技能圖 ===== */
+      .skill-img-wrap {
+        text-align: center;
+        padding: 8px 0;
+      }
+
+      .skill-img-wrap img {
+        max-width: 600px;
+        width: 100%;
+        border-radius: var(--radius-md);
+        border: 1px solid var(--border);
+        display: block;
+        margin: 0 auto;
+      }
+
+      .skill-img-wrap p {
+        margin-top: 10px;
+        font-size: 12px;
+        color: var(--text-muted);
+      }
+
+      /* ===== 彩蛋 ===== */
+      #easter-egg-btn {
+        position: fixed;
+        bottom: 24px;
+        right: 24px;
+        width: 52px;
+        height: 52px;
+        cursor: pointer;
+        z-index: 3000;
+        border-radius: 50%;
+        transition: transform 0.3s ease;
+        filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.5));
+      }
+
+      #easter-egg-btn:hover {
+        transform: scale(1.15) rotate(8deg);
+      }
+
+      #surprise-modal {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(5, 6, 10, 0.85);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        z-index: 4000;
+        justify-content: center;
+        align-items: center;
+      }
+
+      #surprise-modal.active {
+        display: flex;
+      }
+      #surprise-modal.active .modal-content {
+        transform: scale(1);
+        opacity: 1;
+      }
+
+      .modal-content {
+        background: var(--bg-card);
+        border: 1px solid var(--border-bright);
+        padding: 28px;
+        border-radius: var(--radius-lg);
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);
+        text-align: center;
+        position: relative;
+        max-width: 420px;
+        width: 90%;
+        transform: scale(0.9);
+        opacity: 0;
+        transition:
+          transform 0.25s ease-out,
+          opacity 0.25s ease-out;
+      }
+
+      .modal-content img {
+        max-width: 100%;
+        max-height: 65vh;
+        object-fit: contain;
+        border-radius: var(--radius-md);
+        border: 1px solid var(--border-bright);
+        display: block;
+        margin: 0 auto;
+      }
+
+      .modal-content h4 {
+        color: #b78cf7;
+        font-size: 1.1rem;
+        font-weight: 700;
+        margin-bottom: 16px;
+      }
+
+      .close-button {
+        position: absolute;
+        top: 12px;
+        right: 16px;
+        font-size: 22px;
+        color: var(--text-muted);
+        cursor: pointer;
+        transition: color 0.2s;
+        line-height: 1;
+      }
+
+      .close-button:hover {
+        color: var(--text-primary);
+      }
+
+      /* ===== Footer ===== */
+      footer {
+        text-align: center;
+        padding: 36px 20px;
+        color: var(--text-muted);
+        font-size: 12px;
+        border-top: 1px solid var(--border);
+        position: relative;
+        z-index: 1;
+        letter-spacing: 0.04em;
+      }
+
+      /* ===== RWD ===== */
+      @media (max-width: 768px) {
+        .hero-img {
+          height: 38vh;
+        }
         .hero-content {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 90%;
+          padding-bottom: 28px;
         }
+        .main-content {
+          padding: 24px 14px;
+        }
+      }
 
-        .hero-content h1 {
-            font-size: clamp(2.5rem, 8vw, 4rem);
-            margin-bottom: 20px;
-            text-shadow: 0 4px 15px rgba(0,0,0,0.9);
-            letter-spacing: 2px;
+      @media (max-width: 600px) {
+        .guide-card-header {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 10px;
         }
-
-        .novel-btn {
-            padding: 12px 45px;
-            font-size: 1.1rem;
-            border: none;
-            border-radius: 50px;
-            background: linear-gradient(45deg, #4af, #8ef);
-            color: #000;
-            font-weight: bold;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-
-        .novel-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 25px rgba(0,170,255,0.6);
-        }
-
-        section {
-            padding: 50px 8%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        h2 {
-            font-size: 2rem;
-            margin-bottom: 30px;
-            border-left: 6px solid #4af;
-            padding-left: 15px;
-            display: inline-block;
-        }
-
-        /* 職業卡片區 */
-        .characters {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 25px;
-        }
-
-        .character-card {
-            background-color: #222;
-            padding: 15px;
-            border-radius: 15px;
-            text-align: center;
-            transition: 0.3s;
-            border: 1px solid #333;
-            cursor: pointer;
-        }
-
-        .character-card img {
-            width: 100%;
-            border-radius: 10px;
-            aspect-ratio: 1/1;
-            object-fit: cover;
-            margin-bottom: 10px;
-        }
-
-        .character-card:hover {
-            border-color: #4af;
-            transform: translateY(-8px);
-            background-color: #2a2a2a;
-        }
-
-        /* 表格樣式 */
-        .table-container {
-            overflow-x: auto;
-            border-radius: 12px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
-        }
-
-        table {
-            width: 100%;
-            min-width: 900px;
-            border-collapse: collapse;
-            background-color: #222;
-        }
-
-        th, td {
-            padding: 15px;
-            border: 1px solid #444;
-            text-align: center;
-        }
-
-        th {
-            background-color: #333;
-            color: #4af;
-            font-weight: bold;
-        }
-
-        tbody tr:nth-child(even) {
-            background-color: #1a1a1a;
-        }
-
-        tbody tr:hover {
-            background-color: #3a3a3a;
-        }
-
-        .countdown-active {
-            color: #ffcc00;
-            font-weight: bold;
-        }
-
-        /* 攻略圖 */
-        .guide-img {
-            max-width: 100%;
-            border-radius: 12px;
-            border: 1px solid #444;
-        }
-
-        footer {
-            padding: 40px;
-            text-align: center;
-            color: #666;
-            border-top: 1px solid #333;
-            margin-top: 50px;
-        }
-
-        @media (max-width: 768px) {
-            section { padding: 30px 5%; }
-        }
-
-        /* 彩蛋表情樣式 */
-        #easter-egg-btn {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 60px;
-            height: 60px;
-            cursor: pointer;
-            z-index: 3000;
-            transition: transform 0.3s;
-        }
-        #easter-egg-btn:hover { transform: scale(1.2); }
-
-        /* 驚喜彈出視窗 */
-        #surprise-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.85);
-            z-index: 4000;
-            justify-content: center;
-            align-items: center;
-        }
-        .modal-content {
-            background: #282828;
-            padding: 25px;
-            border-radius: 12px;
-            text-align: center;
-            max-width: 400px;
-            width: 90%;
-            position: relative;
-        }
-        .modal-content img {
-            max-width: 100%;
-            max-height: 70vh;
-            object-fit: contain;
-            border: 2px solid #4af;
-            border-radius: 8px;
-        }
-        .close-button {
-            position: absolute;
-            top: 10px;
-            right: 15px;
-            font-size: 28px;
-            cursor: pointer;
-            color: #aaa;
-        }
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
+    <!-- ===== Header ===== -->
+    <header>
+      <img class="hero-img" src="pic/wallpaper.png" alt="伊格尼斯背景" />
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <h1>伊格尼斯攻略</h1>
+      </div>
+    </header>
 
-<header>
-    <img src="pic/wallpaper.jpg" alt="哈帕迪背景">
-    <div class="hero-content">
-        <h1>哈帕迪攻略</h1>
-        <button class="novel-btn" onclick="location.href='novel.html'">進入小說世界</button>
+    <!-- ===== 延伸閱讀 ===== -->
+    <div class="menu-extra">
+      <div class="menu-extra-title">延伸閱讀</div>
+      <div class="menu-extra-links">
+        <a
+          href="https://www.taptap.cn/moment/735771760900706003"
+          target="_blank"
+          >傷害乘區機制</a
+        >
+        <a
+          href="https://www.taptap.cn/moment/769601162142810448"
+          target="_blank"
+          >傷害計算機制</a
+        >
+        <a
+          href="https://www.taptap.cn/moment/742370463644125273"
+          target="_blank"
+          >速度機制</a
+        >
+        <a
+          href="https://www.taptap.cn/moment/704006810297699798"
+          target="_blank"
+          >雕像一覽</a
+        >
+        <a
+          href="https://www.taptap.cn/moment/802094320948612370"
+          target="_blank"
+          >S5地圖與解謎</a
+        >
+        <a
+          href="https://www.taptap.cn/moment/802012182794470402"
+          target="_blank"
+          >S5開圖與商店</a
+        >
+        <a
+          href="https://www.taptap.cn/moment/804184169612575627"
+          target="_blank"
+          >混沌幻獸搭配</a
+        >
+        <a
+          href="https://www.taptap.cn/moment/803060387439185032"
+          target="_blank"
+          >裝備詞條</a
+        >
+        <a
+          href="https://www.taptap.cn/moment/799920008539931520"
+          target="_blank"
+          >S5遺物</a
+        >
+      </div>
     </div>
-</header>
 
-<div class="grid">
-    </div>
-
-<img id="easter-egg-btn" src="pic/feile.png" alt="驚喜表情">
-
-<div id="surprise-modal">
-    <div class="modal-content">
-        <span class="close-button">&times;</span>
-        <h4>恭喜你找到彩蛋！</h4>
-        <img id="surprise-img" src="pic/gengtu1.png" alt="驚喜圖片">
-        <p>這是一個小小的驚喜，感謝你的探索！</p>
-    </div>
-</div>
-
-<section id="characters">
-    <h2>六轉職業指南</h2>
-    <div class="characters">
-        <div class="character-card" onclick="location.href='fighter.html'">
-            <img src="pic/fighter.png" alt="鬥士">
-            <h3>鬥士</h3>
+    <!-- ===== 主要內容 ===== -->
+    <div class="main-content">
+      <!-- 攻略頁面入口 -->
+      <section>
+        <div class="section-divider">
+          <div class="section-divider-line"></div>
+          <span class="section-title">攻略指南</span>
+          <div class="section-divider-line"></div>
         </div>
-        <div class="character-card" onclick="location.href='knight.html'">
-            <img src="pic/knight.png" alt="騎士">
-            <h3>騎士</h3>
+        <div class="guide-section">
+          <div class="guide-card">
+            <div class="guide-card-header">
+              <div>
+                <div class="guide-card-title">混沌攻略</div>
+                <div class="guide-card-desc">
+                  各職業配置 · 站位說明 · 技能解析
+                </div>
+              </div>
+              <a href="hundun.html" class="guide-card-link">前往 →</a>
+            </div>
+          </div>
         </div>
-        <div class="character-card" onclick="location.href='mage.html'">
-            <img src="pic/mage.png" alt="術士">
-            <h3>術士</h3>
-        </div>
-        <div class="character-card" onclick="location.href='sage.html'">
-            <img src="pic/sage.png" alt="賢者">
-            <h3>賢者</h3>
-        </div>
-    </div>
-</section>
+      </section>
 
-<section id="dungeon-table">
-    <h2>重要情報一覽</h2>
-    <div class="table-container">
-        <table id="eventTable">
+      <!-- 重要情報一覽 -->
+      <section>
+        <div class="section-divider">
+          <div class="section-divider-line"></div>
+          <span class="section-title">重要情報一覽</span>
+          <div class="section-divider-line"></div>
+        </div>
+        <div class="table-wrapper">
+          <table id="eventTable">
             <thead>
-                <tr>
-                    <th>日期</th>
-                    <th>天數</th>
-                    <th>倒數</th>
-                    <th>副本/項目</th>
-                    <th>普通</th>
-                    <th>困難</th>
-                    <th>惡夢</th>
-                    <th>煉獄</th>
-                </tr>
+              <tr>
+                <th>日期</th>
+                <th>天數</th>
+                <th>倒數</th>
+                <th>副本／項目</th>
+                <th>普通</th>
+                <th>困難</th>
+                <th>惡夢</th>
+                <th>煉獄</th>
+                <th>深淵</th>
+              </tr>
             </thead>
             <tbody>
-    <tr>
-        <td class="date-cell">2026/02/23</td>
-        <td>212</td>
-        <td class="countdown"></td>
-        <td>奇巧鐘樓 / 幻獸同調</td>
-        <td>-</td>
-        <td>2700萬</td>
-        <td>X</td>
-        <td>X</td>
-    </tr>
+              <tr>
+                <td class="date-cell">2026/06/12</td>
+                <td>316</td>
+                <td class="countdown"></td>
+                <td>冰凌尖塔</td>
+                <td>-</td>
+                <td>8200萬</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td class="date-cell">2026/06/25</td>
+                <td>329</td>
+                <td class="countdown"></td>
+                <td><a
+                    href="https://mp.weixin.qq.com/s/rzUDvHybUcB_tI8jnBz27w"
+                    target="_blank"
+                    class="dungeon-link"
+                  >黑岩遺跡</td>
+                <td>1.1億</td>
+                <td>1.3億</td>
+                <td>1.56億</td>
+                <td>2.3億</td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td class="date-cell">2026/06/26</td>
+                <td>330</td>
+                <td class="countdown"></td>
+                <td>賽季新地圖開放</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td class="date-cell">2026/07/09</td>
+                <td>343</td>
+                <td class="countdown"></td>
+                <td>
+                  <a
+                    href="https://mp.weixin.qq.com/s/AQMu5XLHCN4adX9xGqouRw"
+                    target="_blank"
+                    class="dungeon-link"
+                  >
+                    永霜聖堂
+                  </a>
+                </td>
+                <td>1.66億</td>
+                <td>1.92億</td>
+                <td>2.3億</td>
+                <td>3.5億</td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td class="date-cell">2026/07/12</td>
+                <td>346</td>
+                <td class="countdown"></td>
+                <td>伊格尼斯古遺物：第二池</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td class="date-cell">2026/07/23</td>
+                <td>357</td>
+                <td class="countdown"></td>
+                <td>炎獄王座</td>
+                <td>2.4億</td>
+                <td>2.8億</td>
+                <td>3.4億</td>
+                <td>5億</td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td class="date-cell">2026/08/06</td>
+                <td>371</td>
+                <td class="countdown"></td>
+                <td>月之宮殿</td>
+                <td>3.58億</td>
+                <td>億</td>
+                <td>億</td>
+                <td>億</td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td class="date-cell">2026/08/11</td>
+                <td>376</td>
+                <td class="countdown"></td>
+                <td>伊格尼斯古遺物：第三池</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td class="date-cell">2026/08/20</td>
+                <td>385</td>
+                <td class="countdown"></td>
+                <td>赤炎之楔</td>
+                <td>億</td>
+                <td>億</td>
+                <td>億</td>
+                <td>億</td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td class="date-cell">2026/09/03</td>
+                <td>399</td>
+                <td class="countdown"></td>
+                <td>起源之門</td>
+                <td>億</td>
+                <td>億</td>
+                <td>億</td>
+                <td>億</td>
+                <td>億</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
 
-    <tr>
-        <td class="date-cell">2026/03/08</td>
-        <td>225</td>
-        <td class="countdown"></td>
-        <td>樂園海盜船</td>
-        <td>3500萬</td>
-        <td>4800萬</td>
-        <td>5700萬</td>
-        <td>8400萬</td>
-    </tr>
-    <tr>
-        <td class="date-cell">2026/03/09</td>
-        <td>226</td>
-        <td class="countdown"></td>
-        <td>賽季新地圖開放</td>
-        <td>-</td>
-        <td>-</td>
-        <td>-</td>
-        <td>-</td>
-    </tr>
-    <tr>
-        <td class="date-cell">2026/03/22</td>
-        <td>239</td>
-        <td class="countdown"></td>
-        <td>海皇潛艇</td>
-        <td>6200萬</td>
-        <td>7200萬</td>
-        <td>8700萬</td>
-        <td>1.3億</td>
-    </tr>
-    <tr>
-        <td class="date-cell">2026/03/25</td>
-        <td>272</td>
-        <td class="countdown"></td>
-        <td>哈帕迪古遺物：第二池塘</td>
-        <td>-</td>
-        <td>-</td>
-        <td>-</td>
-        <td>-</td>
-    </tr>
-
-    <tr>
-        <td class="date-cell">2026/04/05</td>
-        <td>253</td>
-        <td class="countdown"></td>
-        <td>發條要塞</td>
-        <td>9100萬</td>
-        <td>1.1億</td>
-        <td>1.35億</td>
-        <td>1.9億</td>
-    </tr>
-    <tr>
-        <td class="date-cell">2026/04/19</td>
-        <td>267</td>
-        <td class="countdown"></td>
-        <td>天象觀測站</td>
-        <td>1.45億</td>
-        <td>1.75億</td>
-        <td>2.1億</td>
-        <td>3.05億</td>
-    </tr>
-    <tr>
-        <td class="date-cell">2026/04/24</td>
-        <td>242</td>
-        <td class="countdown"></td>
-        <td>哈帕迪古遺物：第三池塘</td>
-        <td>-</td>
-        <td>-</td>
-        <td>-</td>
-        <td>-</td>
-    </tr>
-
-    <tr>
-        <td class="date-cell">2026/05/03</td>
-        <td>281</td>
-        <td class="countdown"></td>
-        <td>泰坦樂氣球</td>
-        <td>2.2億</td>
-        <td>2.65億</td>
-        <td>3.15億</td>
-        <td>4.65億</td>
-    </tr>
-    <tr>
-        <td class="date-cell">2026/05/17</td>
-        <td>295</td>
-        <td class="countdown"></td>
-        <td>星空之城</td>
-        <td>3.3億</td>
-        <td>3.85億</td>
-        <td>4.75億</td>
-        <td>7.85億</td>
-    </tr>
-</tbody>
-        </table>
+      <!-- 技能轉換表 -->
+      <section>
+        <div class="section-divider">
+          <div class="section-divider-line"></div>
+          <span class="section-title">技能轉換表</span>
+          <div class="section-divider-line"></div>
+        </div>
+        <div class="skill-img-wrap">
+          <img src="pic/skill.png" alt="技能轉換表" />
+          <p>提示：紅色圈圈標記為各職業的核心技能。</p>
+        </div>
+      </section>
     </div>
-    <p style="margin-top:20px; text-align:center;">
-        <a href="https://www.taptap.cn/moment/761801474576482900" target="_blank" style="color:#4af; text-decoration:none;">🔗 查看 TapTap 完整副本詳情</a>
-    </p>
-</section>
 
-<section id="guide">
-    <h2>技能轉換表</h2>
-    <p style="margin-bottom:15px; color:#aaa;">提示：紅色圈圈標記為各職業的核心技能。</p>
-    <img src="pic/skill.png" alt="技能轉換表" class="guide-img">
-</section>
+    <!-- ===== 彩蛋 ===== -->
+    <img id="easter-egg-btn" src="pic/feile.png" alt="驚喜表情" />
 
-<footer>
-    © 2026 仗劍傳說攻略站 | 坎斯汀之約
-</footer>
+    <div id="surprise-modal">
+      <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <h4>🎉 恭喜找到彩蛋！</h4>
+        <img
+          id="surprise-img"
+          src="pic/gengtu1.png"
+          alt="驚喜圖片"
+          loading="lazy"
+        />
+      </div>
+    </div>
 
-<script>
-// 自動計算倒數計時腳本
-function updateCountdowns() {
-    const rows = document.querySelectorAll("#eventTable tbody tr");
-    const today = new Date();
-    today.setHours(0, 0, 0, 0); // 歸零時分秒，只比較日期
+    <footer>© 2026 仗劍傳說攻略站 · 坎斯汀之約</footer>
 
-    rows.forEach(row => {
-        const dateCell = row.querySelector(".date-cell");
-        const countdownCell = row.querySelector(".countdown");
-        
-        if (dateCell && countdownCell) {
-            const targetDate = new Date(dateCell.innerText);
-            
-            if (!isNaN(targetDate)) {
-                const diffTime = targetDate - today;
-                const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-                
-                if (diffDays > 0) {
-                    countdownCell.innerText = ` ${diffDays} 天`;
-                } else if (diffDays === 0) {
-                    countdownCell.innerText = "★ 今日開啟 ★";
-                    countdownCell.classList.add("countdown-active");
-                } else {
-                    countdownCell.innerText = "已過期";
-                    countdownCell.style.color = "#555";
-                }
-            }
+    <script>
+      // 倒數計時
+      function updateCountdowns() {
+        const rows = document.querySelectorAll("#eventTable tbody tr");
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+        rows.forEach((row) => {
+          const dateCell = row.querySelector(".date-cell");
+          const countdownCell = row.querySelector(".countdown");
+          if (!dateCell || !countdownCell) return;
+          const targetDate = new Date(dateCell.textContent);
+          if (isNaN(targetDate)) return;
+          const diffDays = Math.ceil((targetDate - today) / 86400000);
+          if (diffDays > 0) {
+            countdownCell.textContent = `${diffDays} 天`;
+          } else if (diffDays === 0) {
+            countdownCell.textContent = "★ 今日開啟 ★";
+            countdownCell.classList.add("countdown-active");
+          } else {
+            countdownCell.textContent = "已過期";
+            countdownCell.parentElement
+              .querySelectorAll("td")
+              .forEach((td) => td.classList.add("expired"));
+          }
+        });
+      }
+
+      // 彩蛋
+      const easterEggBtn = document.getElementById("easter-egg-btn");
+      const surpriseModal = document.getElementById("surprise-modal");
+      const surpriseImg = document.getElementById("surprise-img");
+      const closeModal = surpriseModal.querySelector(".close-button");
+
+      const randomImages = Array.from(
+        { length: 8 },
+        (_, i) => `pic/gengtu${i + 1}.png`,
+      );
+      let shuffled = [],
+        shuffleIdx = 0;
+
+      function shuffle(arr) {
+        const a = [...arr];
+        for (let i = a.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [a[i], a[j]] = [a[j], a[i]];
         }
-    });
-}
+        return a;
+      }
 
-// --- 彩蛋隨機圖片邏輯 ---
-    const easterEggBtn = document.getElementById("easter-egg-btn");
-    const surpriseModal = document.getElementById("surprise-modal");
-    const surpriseImg = document.getElementById("surprise-img");
-    const closeModal = surpriseModal.querySelector(".close-button");
-
-    const randomImages = [
-        "pic/gengtu1.png",
-        "pic/gengtu2.png",
-        "pic/gengtu3.png",
-        "pic/gengtu4.png",
-        "pic/gengtu5.png",
-        "pic/gengtu6.png",
-        "pic/gengtu7.png",
-        "pic/gengtu8.png"
-    ];
-
-    easterEggBtn.onclick = () => {
-        const randomIndex = Math.floor(Math.random() * randomImages.length);
-        surpriseImg.src = randomImages[randomIndex];
+      easterEggBtn.addEventListener("click", () => {
+        if (!shuffled.length || shuffleIdx >= shuffled.length) {
+          shuffled = shuffle(randomImages);
+          shuffleIdx = 0;
+        }
+        surpriseImg.src = shuffled[shuffleIdx++];
         surpriseModal.style.display = "flex";
+        setTimeout(() => surpriseModal.classList.add("active"), 10);
         document.body.style.overflow = "hidden";
-    };
+      });
 
-    closeModal.onclick = () => {
-        surpriseModal.style.display = "none";
-        document.body.style.overflow = "auto";
-    };
+      function closeSurpriseModal() {
+        surpriseModal.classList.remove("active");
+        setTimeout(() => {
+          surpriseModal.style.display = "none";
+        }, 280);
+        document.body.style.overflow = "";
+      }
 
-    surpriseModal.onclick = (e) => {
-        if(e.target === surpriseModal) closeModal.onclick();
-    };
+      closeModal.addEventListener("click", closeSurpriseModal);
+      surpriseModal.addEventListener("click", (e) => {
+        if (e.target === surpriseModal) closeSurpriseModal();
+      });
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && surpriseModal.classList.contains("active"))
+          closeSurpriseModal();
+      });
 
-window.onload = updateCountdowns;
-</script>
-
-</body>
+      window.onload = updateCountdowns;
+    </script>
+  </body>
 </html>
