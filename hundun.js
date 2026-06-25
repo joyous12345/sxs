@@ -118,37 +118,23 @@ function filterBoxes() {
   const job = jobSelect.value;
   const type = typeSelect.value;
 
-  let visible6 = 0,
-    visible7 = 0;
+  let visible = 0;
 
   boxes.forEach((box) => {
     const match =
       (job === "all" || box.dataset.job === job) &&
       (type === "all" || box.dataset.type === type);
     box.classList.toggle("hidden", !match);
-
-    if (match) {
-      if (box.closest("#grid-6")) visible6++;
-      if (box.closest("#grid-7")) visible7++;
-    }
+    if (match) visible++;
   });
 
-  const total = visible6 + visible7;
   if (filterCount) {
     filterCount.textContent =
-      job !== "all" || type !== "all" ? `共 ${total} 筆` : "";
+      job !== "all" || type !== "all" ? `共 ${visible} 筆` : "";
   }
 
-  const nr6 = document.getElementById("no-results");
-  const nr7 = document.getElementById("no-results-7");
-  if (nr6) {
-    nr6.textContent = "目前沒有符合篩選條件的資料。";
-    nr6.classList.toggle("visible", visible6 === 0);
-  }
-  if (nr7) {
-    nr7.textContent = "目前沒有符合篩選條件的資料。";
-    nr7.classList.toggle("visible", visible7 === 0);
-  }
+  const nr = document.getElementById("no-results-7");
+  if (nr) nr.classList.toggle("visible", visible === 0);
 }
 
 jobSelect.addEventListener("change", filterBoxes);
