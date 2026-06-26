@@ -10,9 +10,7 @@
       href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Cinzel:wght@600&display=swap"
       rel="stylesheet"
     />
-
     <style>
-      /* ===== 變數 ===== */
       :root {
         --bg-base: #0e0f13;
         --bg-surface: #161820;
@@ -30,7 +28,6 @@
         --radius-md: 10px;
         --radius-lg: 14px;
       }
-
       *,
       *::before,
       *::after {
@@ -38,7 +35,6 @@
         margin: 0;
         padding: 0;
       }
-
       body {
         font-family:
           "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
@@ -47,7 +43,6 @@
         min-height: 100vh;
         line-height: 1.6;
       }
-
       body::before {
         content: "";
         position: fixed;
@@ -66,14 +61,11 @@
         pointer-events: none;
         z-index: 0;
       }
-
-      /* ===== Header ===== */
       header {
         position: relative;
         z-index: 1;
         overflow: hidden;
       }
-
       .hero-img {
         width: 100%;
         height: 52vh;
@@ -81,7 +73,6 @@
         display: block;
         filter: brightness(0.45);
       }
-
       .hero-overlay {
         position: absolute;
         inset: 0;
@@ -91,7 +82,6 @@
           var(--bg-base) 100%
         );
       }
-
       .hero-content {
         position: absolute;
         bottom: 0;
@@ -100,7 +90,6 @@
         text-align: center;
         padding: 0 20px 40px;
       }
-
       .hero-content h1 {
         font-family: "Cinzel", serif;
         font-size: clamp(1.8rem, 4vw, 2.8rem);
@@ -109,15 +98,12 @@
         color: var(--text-primary);
         text-shadow: 0 0 40px rgba(91, 156, 246, 0.4);
       }
-
       .hero-content p {
         margin-top: 8px;
         font-size: 13px;
         color: var(--text-muted);
         letter-spacing: 0.05em;
       }
-
-      /* ===== 延伸閱讀 ===== */
       .menu-extra {
         max-width: 1400px;
         margin: 0 auto;
@@ -126,7 +112,6 @@
         position: relative;
         z-index: 1;
       }
-
       .menu-extra-title {
         font-size: 11px;
         color: var(--text-muted);
@@ -134,13 +119,11 @@
         text-transform: uppercase;
         margin-bottom: 10px;
       }
-
       .menu-extra-links {
         display: flex;
         flex-wrap: wrap;
         gap: 8px;
       }
-
       .menu-extra-links a {
         display: inline-flex;
         align-items: center;
@@ -154,20 +137,16 @@
         border: 1px solid var(--border);
         transition: all 0.2s;
       }
-
       .menu-extra-links a::before {
         content: "↗";
         font-size: 10px;
         opacity: 0.5;
       }
-
       .menu-extra-links a:hover {
         color: var(--accent);
         border-color: rgba(91, 156, 246, 0.35);
         background: var(--accent-dim);
       }
-
-      /* ===== 主要內容 ===== */
       .main-content {
         max-width: 1400px;
         margin: 0 auto;
@@ -178,15 +157,12 @@
         flex-direction: column;
         gap: 48px;
       }
-
-      /* ===== 區塊標題 ===== */
       .section-divider {
         display: flex;
         align-items: center;
         gap: 20px;
         margin-bottom: 24px;
       }
-
       .section-divider-line {
         flex: 1;
         height: 1px;
@@ -197,7 +173,6 @@
           transparent
         );
       }
-
       .section-title {
         font-family: "Cinzel", serif;
         font-size: 1.1rem;
@@ -207,21 +182,17 @@
         text-shadow: 0 0 20px var(--accent-glow);
         flex-shrink: 0;
       }
-
-      /* ===== 副本表格 ===== */
       .table-wrapper {
         overflow-x: auto;
         border-radius: var(--radius-lg);
         border: 1px solid var(--border);
         background: var(--bg-card);
       }
-
       table {
         width: 100%;
         min-width: 820px;
         border-collapse: collapse;
       }
-
       th,
       td {
         padding: 13px 16px;
@@ -229,7 +200,6 @@
         border-bottom: 1px solid var(--border);
         font-size: 13.5px;
       }
-
       th {
         background: var(--bg-surface);
         color: var(--accent);
@@ -238,31 +208,31 @@
         letter-spacing: 0.05em;
         white-space: nowrap;
       }
-
       tbody tr:last-child td {
         border-bottom: none;
       }
-
       tbody tr:hover {
         background: var(--bg-hover);
       }
-
       .countdown-active {
         color: #f5c842;
         font-weight: 700;
       }
-
       td.expired {
         color: var(--text-muted);
       }
-
-      /* ===== 攻略卡片 ===== */
+      .dungeon-link {
+        color: var(--accent);
+        text-decoration: none;
+      }
+      .dungeon-link:hover {
+        text-decoration: underline;
+      }
       .guide-section {
         display: flex;
         flex-direction: column;
         gap: 16px;
       }
-
       .guide-card {
         background: var(--bg-card);
         border: 1px solid var(--border);
@@ -273,13 +243,11 @@
           transform 0.22s,
           box-shadow 0.22s;
       }
-
       .guide-card:hover {
         border-color: var(--border-bright);
         transform: translateY(-3px);
         box-shadow: 0 8px 32px rgba(91, 156, 246, 0.08);
       }
-
       .guide-card-header {
         display: flex;
         align-items: center;
@@ -287,18 +255,15 @@
         padding: 16px 20px;
         border-bottom: 1px solid var(--border);
       }
-
       .guide-card-title {
         font-size: 15px;
         font-weight: 700;
         color: var(--text-primary);
       }
-
       .guide-card-desc {
         font-size: 12px;
         color: var(--text-muted);
       }
-
       .guide-card-link {
         display: inline-flex;
         align-items: center;
@@ -314,18 +279,14 @@
         transition: all 0.2s;
         white-space: nowrap;
       }
-
       .guide-card-link:hover {
         background: rgba(91, 156, 246, 0.15);
         border-color: rgba(91, 156, 246, 0.5);
       }
-
-      /* ===== 技能圖 ===== */
       .skill-img-wrap {
         text-align: center;
         padding: 8px 0;
       }
-
       .skill-img-wrap img {
         max-width: 600px;
         width: 100%;
@@ -334,11 +295,157 @@
         display: block;
         margin: 0 auto;
       }
-
       .skill-img-wrap p {
         margin-top: 10px;
         font-size: 12px;
         color: var(--text-muted);
+      }
+
+      /* ===== 轮播 ===== */
+      .carousel-wrap {
+        position: relative;
+        display: flex;
+        align-items: center;
+        gap: 0;
+      }
+      .carousel-track-wrap {
+        flex: 1;
+        overflow: hidden;
+        border-radius: var(--radius-lg);
+      }
+      .carousel-track {
+        display: flex;
+        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .carousel-img {
+        min-width: 100%;
+        width: 100%;
+        max-height: 480px;
+        object-fit: contain;
+        background: #111;
+        border-radius: var(--radius-lg);
+        cursor: zoom-in;
+        display: block;
+      }
+      .carousel-btn {
+        flex-shrink: 0;
+        background: rgba(30, 32, 44, 0.85);
+        border: 1px solid var(--border-bright);
+        color: var(--text-primary);
+        font-size: 2rem;
+        line-height: 1;
+        width: 44px;
+        height: 64px;
+        cursor: pointer;
+        border-radius: var(--radius-sm);
+        transition:
+          background 0.2s,
+          color 0.2s;
+        z-index: 2;
+      }
+      .carousel-btn:hover {
+        background: var(--accent-dim);
+        color: var(--accent);
+      }
+      .carousel-prev {
+        margin-right: 10px;
+      }
+      .carousel-next {
+        margin-left: 10px;
+      }
+      .carousel-dots {
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+        margin-top: 14px;
+      }
+      .dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--text-muted);
+        cursor: pointer;
+        transition:
+          background 0.2s,
+          transform 0.2s;
+      }
+      .dot.active {
+        background: var(--accent);
+        transform: scale(1.3);
+      }
+      .carousel-credit {
+        text-align: center;
+        margin-top: 12px;
+        font-size: 12px;
+        color: var(--text-muted);
+      }
+      .carousel-credit span {
+        color: var(--text-secondary);
+      }
+
+      /* ===== 灯箱 ===== */
+      #lightbox {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(5, 6, 10, 0.92);
+        backdrop-filter: blur(10px);
+        z-index: 5000;
+        justify-content: center;
+        align-items: center;
+      }
+      #lightbox.active {
+        display: flex;
+      }
+      #lightbox-img {
+        max-width: 90vw;
+        max-height: 88vh;
+        object-fit: contain;
+        border-radius: var(--radius-md);
+        border: 1px solid var(--border-bright);
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+      }
+      .lb-close {
+        position: fixed;
+        top: 18px;
+        right: 24px;
+        font-size: 32px;
+        color: var(--text-muted);
+        cursor: pointer;
+        line-height: 1;
+        transition: color 0.2s;
+        z-index: 5001;
+      }
+      .lb-close:hover {
+        color: var(--text-primary);
+      }
+      .lb-btn {
+        position: fixed;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(30, 32, 44, 0.85);
+        border: 1px solid var(--border-bright);
+        color: var(--text-primary);
+        font-size: 2.5rem;
+        line-height: 1;
+        width: 52px;
+        height: 80px;
+        cursor: pointer;
+        border-radius: var(--radius-sm);
+        transition:
+          background 0.2s,
+          color 0.2s;
+        z-index: 5001;
+      }
+      .lb-btn:hover {
+        background: var(--accent-dim);
+        color: var(--accent);
+      }
+      .lb-prev {
+        left: 16px;
+      }
+      .lb-next {
+        right: 16px;
       }
 
       /* ===== 彩蛋 ===== */
@@ -354,11 +461,9 @@
         transition: transform 0.3s ease;
         filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.5));
       }
-
       #easter-egg-btn:hover {
         transform: scale(1.15) rotate(8deg);
       }
-
       #surprise-modal {
         display: none;
         position: fixed;
@@ -370,7 +475,6 @@
         justify-content: center;
         align-items: center;
       }
-
       #surprise-modal.active {
         display: flex;
       }
@@ -378,7 +482,6 @@
         transform: scale(1);
         opacity: 1;
       }
-
       .modal-content {
         background: var(--bg-card);
         border: 1px solid var(--border-bright);
@@ -395,7 +498,6 @@
           transform 0.25s ease-out,
           opacity 0.25s ease-out;
       }
-
       .modal-content img {
         max-width: 100%;
         max-height: 65vh;
@@ -405,14 +507,12 @@
         display: block;
         margin: 0 auto;
       }
-
       .modal-content h4 {
         color: #b78cf7;
         font-size: 1.1rem;
         font-weight: 700;
         margin-bottom: 16px;
       }
-
       .close-button {
         position: absolute;
         top: 12px;
@@ -423,12 +523,9 @@
         transition: color 0.2s;
         line-height: 1;
       }
-
       .close-button:hover {
         color: var(--text-primary);
       }
-
-      /* ===== Footer ===== */
       footer {
         text-align: center;
         padding: 36px 20px;
@@ -439,8 +536,6 @@
         z-index: 1;
         letter-spacing: 0.04em;
       }
-
-      /* ===== RWD ===== */
       @media (max-width: 768px) {
         .hero-img {
           height: 38vh;
@@ -451,8 +546,17 @@
         .main-content {
           padding: 24px 14px;
         }
+        .carousel-btn {
+          width: 36px;
+          height: 52px;
+          font-size: 1.5rem;
+        }
+        .lb-btn {
+          width: 40px;
+          height: 60px;
+          font-size: 2rem;
+        }
       }
-
       @media (max-width: 600px) {
         .guide-card-header {
           flex-direction: column;
@@ -462,18 +566,13 @@
       }
     </style>
   </head>
-
   <body>
-    <!-- ===== Header ===== -->
     <header>
       <img class="hero-img" src="pic/wallpaper.png" alt="伊格尼斯背景" />
       <div class="hero-overlay"></div>
-      <div class="hero-content">
-        <h1>伊格尼斯攻略</h1>
-      </div>
+      <div class="hero-content"><h1>伊格尼斯攻略</h1></div>
     </header>
 
-    <!-- ===== 延伸閱讀 ===== -->
     <div class="menu-extra">
       <div class="menu-extra-title">延伸閱讀</div>
       <div class="menu-extra-links">
@@ -525,9 +624,7 @@
       </div>
     </div>
 
-    <!-- ===== 主要內容 ===== -->
     <div class="main-content">
-      <!-- 攻略頁面入口 -->
       <section>
         <div class="section-divider">
           <div class="section-divider-line"></div>
@@ -549,7 +646,6 @@
         </div>
       </section>
 
-      <!-- 重要情報一覽 -->
       <section>
         <div class="section-divider">
           <div class="section-divider-line"></div>
@@ -587,11 +683,14 @@
                 <td class="date-cell">2026/06/25</td>
                 <td>329</td>
                 <td class="countdown"></td>
-                <td><a
+                <td>
+                  <a
                     href="https://mp.weixin.qq.com/s/rzUDvHybUcB_tI8jnBz27w"
                     target="_blank"
                     class="dungeon-link"
-                  >黑岩遺跡</td>
+                    >黑岩遺跡</a
+                  >
+                </td>
                 <td>1.1億</td>
                 <td>1.3億</td>
                 <td>1.56億</td>
@@ -618,9 +717,8 @@
                     href="https://mp.weixin.qq.com/s/AQMu5XLHCN4adX9xGqouRw"
                     target="_blank"
                     class="dungeon-link"
+                    >永霜聖堂</a
                   >
-                    永霜聖堂
-                  </a>
                 </td>
                 <td>1.66億</td>
                 <td>1.92億</td>
@@ -644,12 +742,13 @@
                 <td>357</td>
                 <td class="countdown"></td>
                 <td>
-                <a
+                  <a
                     href="https://mp.weixin.qq.com/s/z8i0Cc1rzGN9Op0Gjw5njA"
                     target="_blank"
                     class="dungeon-link"
+                    >炎獄王座</a
                   >
-                  炎獄王座</td>
+                </td>
                 <td>2.4億</td>
                 <td>2.8億</td>
                 <td>3.4億</td>
@@ -665,9 +764,8 @@
                     href="https://mp.weixin.qq.com/s/hgrsgjpYw6MNgUpqxEovVQ"
                     target="_blank"
                     class="dungeon-link"
+                    >月之宮殿</a
                   >
-                    月之宮殿
-                  </a>
                 </td>
                 <td>3.58億</td>
                 <td>4.15億</td>
@@ -684,9 +782,8 @@
                     href="https://mp.weixin.qq.com/s/WCcyBcP2YktaFIpRR2hDiQ"
                     target="_blank"
                     class="dungeon-link"
+                    >伊格尼斯古遺物：第三池</a
                   >
-                    伊格尼斯古遺物：第三池
-                  </a>
                 </td>
                 <td>-</td>
                 <td>-</td>
@@ -719,12 +816,79 @@
             </tbody>
           </table>
         </div>
-        <div style="margin-top: 24px; text-align: center;">
-          <img src="pic/shengji.jpg" alt="情報圖片" style="max-width: 100%; border-radius: 10px; border: 1px solid var(--border);" />
+
+        <!-- 轮播 -->
+        <div style="margin-top: 28px">
+          <div class="carousel-wrap">
+            <button
+              class="carousel-btn carousel-prev"
+              onclick="carouselMove(-1)"
+            >
+              &#8249;
+            </button>
+            <div class="carousel-track-wrap">
+              <div class="carousel-track" id="carouselTrack">
+                <img
+                  src="pic/shengji.jpg"
+                  alt="圖1"
+                  class="carousel-img"
+                  onclick="openLightbox(0)"
+                />
+                <img
+                  src="pic/fubenzhaungbei.png"
+                  alt="圖2"
+                  class="carousel-img"
+                  onclick="openLightbox(1)"
+                />
+                <img
+                  src="pic/yiwu.png"
+                  alt="圖3"
+                  class="carousel-img"
+                  onclick="openLightbox(2)"
+                />
+                <img
+                  src="pic/ditu.png"
+                  alt="圖4"
+                  class="carousel-img"
+                  onclick="openLightbox(3)"
+                />
+                <img
+                  src="pic/fubenboss.png"
+                  alt="圖5"
+                  class="carousel-img"
+                  onclick="openLightbox(4)"
+                />
+              </div>
+            </div>
+            <button
+              class="carousel-btn carousel-next"
+              onclick="carouselMove(1)"
+            >
+              &#8250;
+            </button>
+          </div>
+          <div class="carousel-dots" id="carouselDots">
+            <span class="dot active" onclick="carouselGoTo(0)"></span>
+            <span class="dot" onclick="carouselGoTo(1)"></span>
+            <span class="dot" onclick="carouselGoTo(2)"></span>
+            <span class="dot" onclick="carouselGoTo(3)"></span>
+            <span class="dot" onclick="carouselGoTo(4)"></span>
+          </div>
+          <p
+            id="carouselDesc"
+            style="
+              text-align: center;
+              margin-top: 10px;
+              font-size: 13px;
+              color: var(--text-secondary);
+            "
+          ></p>
+          <p class="carousel-credit">
+            圖片來源：<span>dc：杖力而為</span>　·　點擊圖片放大查看
+          </p>
         </div>
       </section>
 
-      <!-- 技能轉換表 -->
       <section>
         <div class="section-divider">
           <div class="section-divider-line"></div>
@@ -738,9 +902,36 @@
       </section>
     </div>
 
-    <!-- ===== 彩蛋 ===== -->
-    <img id="easter-egg-btn" src="pic/feile.png" alt="驚喜表情" />
+    <!-- 灯箱 -->
+    <div id="lightbox" onclick="closeLightbox()">
+      <button
+        class="lb-btn lb-prev"
+        onclick="
+          event.stopPropagation();
+          lbMove(-1);
+        "
+      >
+        &#8249;
+      </button>
+      <img
+        id="lightbox-img"
+        src=""
+        alt="放大圖"
+        onclick="event.stopPropagation()"
+      />
+      <button
+        class="lb-btn lb-next"
+        onclick="
+          event.stopPropagation();
+          lbMove(1);
+        "
+      >
+        &#8250;
+      </button>
+      <span class="lb-close" onclick="closeLightbox()">&times;</span>
+    </div>
 
+    <img id="easter-egg-btn" src="pic/feile.png" alt="驚喜表情" />
     <div id="surprise-modal">
       <div class="modal-content">
         <span class="close-button">&times;</span>
@@ -757,7 +948,7 @@
     <footer>© 2026 仗劍傳說攻略站 · 坎斯汀之約</footer>
 
     <script>
-      // 倒數計時
+      // 倒數
       function updateCountdowns() {
         const rows = document.querySelectorAll("#eventTable tbody tr");
         const today = new Date();
@@ -769,33 +960,91 @@
           const targetDate = new Date(dateCell.textContent);
           if (isNaN(targetDate)) return;
           const diffDays = Math.ceil((targetDate - today) / 86400000);
-          if (diffDays > 0) {
-            countdownCell.textContent = `${diffDays} 天`;
-          } else if (diffDays === 0) {
+          if (diffDays > 0) countdownCell.textContent = `${diffDays} 天`;
+          else if (diffDays === 0) {
             countdownCell.textContent = "★ 今日開啟 ★";
             countdownCell.classList.add("countdown-active");
           } else {
             countdownCell.textContent = "已過期";
-            countdownCell.parentElement
+            row
               .querySelectorAll("td")
               .forEach((td) => td.classList.add("expired"));
           }
         });
       }
 
+      // 轮播
+      let carouselIdx = 0;
+      const carouselTotal = 5;
+      const carouselImages = [
+        "pic/shengji.jpg",
+        "pic/fubenzhaungbei.png",
+        "pic/yiwu.png",
+        "pic/ditu.png",
+        "pic/fubenboss.png",
+      ];
+      const carouselDescs = [
+        "各个等级需要消耗的升级材料",
+        "副本裝備词条一览",
+        "遺物总结",
+        "S5賽季地圖小資訊, 冰跟火都一樣, 開放日期以6月9日進S5的算",
+        "副本Boss的機制",
+      ];
+
+      function carouselGoTo(idx) {
+        carouselIdx = (idx + carouselTotal) % carouselTotal;
+        document.getElementById("carouselTrack").style.transform =
+          `translateX(-${carouselIdx * 100}%)`;
+        document
+          .querySelectorAll(".dot")
+          .forEach((d, i) => d.classList.toggle("active", i === carouselIdx));
+        document.getElementById("carouselDesc").textContent =
+          carouselDescs[carouselIdx];
+      }
+      function carouselMove(dir) {
+        carouselGoTo(carouselIdx + dir);
+      }
+      // 初始化第一張說明
+      document.addEventListener("DOMContentLoaded", () => {
+        document.getElementById("carouselDesc").textContent = carouselDescs[0];
+      });
+
+      // 灯箱
+      let lbIdx = 0;
+      function openLightbox(idx) {
+        lbIdx = idx;
+        document.getElementById("lightbox-img").src = carouselImages[lbIdx];
+        document.getElementById("lightbox").classList.add("active");
+        document.body.style.overflow = "hidden";
+      }
+      function closeLightbox() {
+        document.getElementById("lightbox").classList.remove("active");
+        document.body.style.overflow = "";
+      }
+      function lbMove(dir) {
+        lbIdx = (lbIdx + dir + carouselTotal) % carouselTotal;
+        document.getElementById("lightbox-img").src = carouselImages[lbIdx];
+        carouselGoTo(lbIdx);
+      }
+      document.addEventListener("keydown", (e) => {
+        if (document.getElementById("lightbox").classList.contains("active")) {
+          if (e.key === "ArrowLeft") lbMove(-1);
+          else if (e.key === "ArrowRight") lbMove(1);
+          else if (e.key === "Escape") closeLightbox();
+        }
+      });
+
       // 彩蛋
       const easterEggBtn = document.getElementById("easter-egg-btn");
       const surpriseModal = document.getElementById("surprise-modal");
       const surpriseImg = document.getElementById("surprise-img");
       const closeModal = surpriseModal.querySelector(".close-button");
-
       const randomImages = Array.from(
         { length: 8 },
         (_, i) => `pic/gengtu${i + 1}.png`,
       );
       let shuffled = [],
         shuffleIdx = 0;
-
       function shuffle(arr) {
         const a = [...arr];
         for (let i = a.length - 1; i > 0; i--) {
@@ -804,7 +1053,6 @@
         }
         return a;
       }
-
       easterEggBtn.addEventListener("click", () => {
         if (!shuffled.length || shuffleIdx >= shuffled.length) {
           shuffled = shuffle(randomImages);
@@ -815,7 +1063,6 @@
         setTimeout(() => surpriseModal.classList.add("active"), 10);
         document.body.style.overflow = "hidden";
       });
-
       function closeSurpriseModal() {
         surpriseModal.classList.remove("active");
         setTimeout(() => {
@@ -823,7 +1070,6 @@
         }, 280);
         document.body.style.overflow = "";
       }
-
       closeModal.addEventListener("click", closeSurpriseModal);
       surpriseModal.addEventListener("click", (e) => {
         if (e.target === surpriseModal) closeSurpriseModal();
