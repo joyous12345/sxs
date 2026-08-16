@@ -10,6 +10,29 @@
   <body>
     <!-- ===== 頁面標題 ===== -->
     <header>
+      <a
+        href="index.html"
+        class="back-link"
+        style="
+          display: inline-block;
+          margin-bottom: 18px;
+          font-size: 12px;
+          color: var(--accent);
+          text-decoration: none;
+          padding: 6px 14px;
+          border-radius: 999px;
+          border: 1px solid rgba(211, 172, 103, 0.35);
+          background: var(--accent-dim);
+          transition: all 0.2s;
+        "
+        onmouseover="
+          this.style.background = 'rgba(211, 172, 103, 0.16)';
+        "
+        onmouseout="
+          this.style.background = 'var(--accent-dim)';
+        "
+        >← 返回伊格尼斯首頁</a
+      >
       <h1>混沌攻略</h1>
     </header>
 
@@ -127,7 +150,6 @@
         </div>
       </div>
     </div>
-
 
     <!-- ===== 無結果提示 ===== -->
     <div id="no-results-7" class="no-results-section">
