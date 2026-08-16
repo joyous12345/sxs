@@ -2,31 +2,34 @@
 
 /* ===== 變數 ===== */
 :root {
-  --bg-base: #0e0f13;
-  --bg-surface: #161820;
-  --bg-card: #1c1e28;
-  --bg-hover: #222434;
-  --border: rgba(255, 255, 255, 0.07);
-  --border-bright: rgba(255, 255, 255, 0.13);
+  --bg-base: #0a0a13;
+  --bg-surface: #13121e;
+  --bg-card: #181726;
+  --bg-hover: #201e34;
+  --border: rgba(201, 168, 106, 0.1);
+  --border-bright: rgba(201, 168, 106, 0.24);
 
-  --accent: #5b9cf6;
-  --accent-glow: rgba(91, 156, 246, 0.18);
-  --accent-dim: rgba(91, 156, 246, 0.08);
+  --accent: #d3ac67;
+  --accent-glow: rgba(211, 172, 103, 0.24);
+  --accent-dim: rgba(211, 172, 103, 0.09);
+  --accent-2: #9c81e6;
+  --accent-2-glow: rgba(156, 129, 230, 0.2);
+  --accent-2-dim: rgba(156, 129, 230, 0.08);
 
-  --warlock: #5b9cf6;
-  --warlock-glow: rgba(91, 156, 246, 0.25);
+  --warlock: #6ba3f0;
+  --warlock-glow: rgba(107, 163, 240, 0.25);
   --sage: #4ecb8c;
   --sage-glow: rgba(78, 203, 140, 0.25);
   --fighter: #f06565;
   --fighter-glow: rgba(240, 101, 101, 0.25);
-  --knight: #f5c842;
-  --knight-glow: rgba(245, 200, 66, 0.25);
+  --knight: #f0ca5c;
+  --knight-glow: rgba(240, 202, 92, 0.25);
   --exp: #b78cf7;
   --exp-glow: rgba(183, 140, 247, 0.25);
 
-  --text-primary: #e8eaf0;
-  --text-secondary: #8e92a6;
-  --text-muted: #555a72;
+  --text-primary: #ece4d3;
+  --text-secondary: #9791a8;
+  --text-muted: #565270;
 
   --radius-sm: 6px;
   --radius-md: 10px;
@@ -57,14 +60,26 @@ body::before {
   inset: 0;
   background-image:
     radial-gradient(
-      ellipse 80% 50% at 20% -10%,
-      rgba(91, 156, 246, 0.06) 0%,
-      transparent 60%
+      ellipse 70% 46% at 18% -8%,
+      rgba(211, 172, 103, 0.09) 0%,
+      transparent 58%
     ),
     radial-gradient(
-      ellipse 60% 40% at 80% 110%,
-      rgba(183, 140, 247, 0.05) 0%,
-      transparent 60%
+      ellipse 55% 38% at 84% 105%,
+      rgba(156, 129, 230, 0.08) 0%,
+      transparent 58%
+    ),
+    repeating-linear-gradient(
+      135deg,
+      rgba(211, 172, 103, 0.025) 0px,
+      rgba(211, 172, 103, 0.025) 1px,
+      transparent 1px,
+      transparent 68px
+    ),
+    radial-gradient(
+      circle at 50% 0%,
+      rgba(10, 10, 19, 0) 0%,
+      rgba(10, 10, 19, 0.5) 100%
     );
   pointer-events: none;
   z-index: 0;
@@ -79,7 +94,7 @@ header {
   border-bottom: 1px solid var(--border);
   background: linear-gradient(
     180deg,
-    rgba(91, 156, 246, 0.04) 0%,
+    rgba(211, 172, 103, 0.05) 0%,
     transparent 100%
   );
 }
@@ -100,15 +115,36 @@ header h1 {
   font-size: clamp(1.8rem, 4vw, 2.8rem);
   font-weight: 600;
   letter-spacing: 0.12em;
-  color: var(--text-primary);
-  text-shadow: 0 0 40px rgba(91, 156, 246, 0.3);
+  background: linear-gradient(
+    135deg,
+    #f0d9a4 0%,
+    var(--accent) 45%,
+    #e8c988 70%,
+    var(--accent) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 0 28px var(--accent-glow));
+}
+
+header h1::before,
+header h1::after {
+  content: "◆";
+  display: inline-block;
+  font-size: 0.32em;
+  color: var(--accent-2);
+  vertical-align: middle;
+  margin: 0 16px;
+  opacity: 0.75;
+  filter: drop-shadow(0 0 6px var(--accent-2-glow));
 }
 
 header p.subtitle {
-  margin-top: 8px;
+  margin-top: 10px;
   font-size: 13px;
   color: var(--text-muted);
-  letter-spacing: 0.05em;
+  letter-spacing: 0.18em;
 }
 
 /* ===== 篩選選單 ===== */
@@ -162,7 +198,7 @@ select {
 
 select:hover,
 select:focus {
-  border-color: rgba(91, 156, 246, 0.4);
+  border-color: rgba(211, 172, 103, 0.4);
   background-color: var(--bg-hover);
 }
 
@@ -180,7 +216,7 @@ select:focus {
 }
 
 .menu button:hover {
-  border-color: rgba(91, 156, 246, 0.5);
+  border-color: rgba(211, 172, 103, 0.5);
   color: var(--accent);
   background: var(--accent-dim);
 }
@@ -239,7 +275,7 @@ select:focus {
 
 .menu-extra-links a:hover {
   color: var(--accent);
-  border-color: rgba(91, 156, 246, 0.35);
+  border-color: rgba(211, 172, 103, 0.35);
   background: var(--accent-dim);
 }
 
@@ -319,8 +355,8 @@ select:focus {
 }
 
 .warlock:hover {
-  border-color: rgba(91, 156, 246, 0.3);
-  box-shadow: 0 8px 32px rgba(91, 156, 246, 0.08);
+  border-color: rgba(107, 163, 240, 0.3);
+  box-shadow: 0 8px 32px rgba(107, 163, 240, 0.08);
 }
 .sage:hover {
   border-color: rgba(78, 203, 140, 0.3);
@@ -331,8 +367,8 @@ select:focus {
   box-shadow: 0 8px 32px rgba(240, 101, 101, 0.08);
 }
 .knight:hover {
-  border-color: rgba(245, 200, 66, 0.3);
-  box-shadow: 0 8px 32px rgba(245, 200, 66, 0.08);
+  border-color: rgba(240, 202, 92, 0.3);
+  box-shadow: 0 8px 32px rgba(240, 202, 92, 0.08);
 }
 .exp:hover {
   border-color: rgba(183, 140, 247, 0.3);
@@ -352,7 +388,7 @@ select:focus {
 }
 
 .warlock .job-badge {
-  background: rgba(91, 156, 246, 0.12);
+  background: rgba(107, 163, 240, 0.12);
   color: var(--warlock);
 }
 .sage .job-badge {
@@ -364,7 +400,7 @@ select:focus {
   color: var(--fighter);
 }
 .knight .job-badge {
-  background: rgba(245, 200, 66, 0.12);
+  background: rgba(240, 202, 92, 0.12);
   color: var(--knight);
 }
 .exp .job-badge {
@@ -429,7 +465,7 @@ select:focus {
 
 .source a:hover,
 .img-link:hover {
-  color: #93bfff;
+  color: #f0d9a4;
   text-decoration: underline;
 }
 
@@ -573,7 +609,7 @@ select:focus {
   font-weight: 500;
 }
 #lightbox-text a:hover {
-  color: #93bfff;
+  color: #f0d9a4;
 }
 
 .lightbox-close {
