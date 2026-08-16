@@ -12,18 +12,21 @@
     />
     <style>
       :root {
-        --bg-base: #0e0f13;
-        --bg-surface: #161820;
-        --bg-card: #1c1e28;
-        --bg-hover: #222434;
-        --border: rgba(255, 255, 255, 0.07);
-        --border-bright: rgba(255, 255, 255, 0.13);
-        --accent: #5b9cf6;
-        --accent-glow: rgba(91, 156, 246, 0.18);
-        --accent-dim: rgba(91, 156, 246, 0.08);
-        --text-primary: #e8eaf0;
-        --text-secondary: #8e92a6;
-        --text-muted: #555a72;
+        --bg-base: #0a0a13;
+        --bg-surface: #13121e;
+        --bg-card: #181726;
+        --bg-hover: #201e34;
+        --border: rgba(201, 168, 106, 0.1);
+        --border-bright: rgba(201, 168, 106, 0.24);
+        --accent: #d3ac67;
+        --accent-glow: rgba(211, 172, 103, 0.24);
+        --accent-dim: rgba(211, 172, 103, 0.09);
+        --accent-2: #9c81e6;
+        --accent-2-glow: rgba(156, 129, 230, 0.2);
+        --accent-2-dim: rgba(156, 129, 230, 0.08);
+        --text-primary: #ece4d3;
+        --text-secondary: #9791a8;
+        --text-muted: #565270;
         --radius-sm: 6px;
         --radius-md: 10px;
         --radius-lg: 14px;
@@ -49,14 +52,26 @@
         inset: 0;
         background-image:
           radial-gradient(
-            ellipse 80% 50% at 20% -10%,
-            rgba(91, 156, 246, 0.06) 0%,
-            transparent 60%
+            ellipse 70% 46% at 18% -8%,
+            rgba(211, 172, 103, 0.09) 0%,
+            transparent 58%
           ),
           radial-gradient(
-            ellipse 60% 40% at 80% 110%,
-            rgba(183, 140, 247, 0.05) 0%,
-            transparent 60%
+            ellipse 55% 38% at 84% 105%,
+            rgba(156, 129, 230, 0.08) 0%,
+            transparent 58%
+          ),
+          repeating-linear-gradient(
+            135deg,
+            rgba(211, 172, 103, 0.025) 0px,
+            rgba(211, 172, 103, 0.025) 1px,
+            transparent 1px,
+            transparent 68px
+          ),
+          radial-gradient(
+            circle at 50% 0%,
+            rgba(10, 10, 19, 0) 0%,
+            rgba(10, 10, 19, 0.5) 100%
           );
         pointer-events: none;
         z-index: 0;
@@ -95,8 +110,28 @@
         font-size: clamp(1.8rem, 4vw, 2.8rem);
         font-weight: 600;
         letter-spacing: 0.12em;
-        color: var(--text-primary);
-        text-shadow: 0 0 40px rgba(91, 156, 246, 0.4);
+        background: linear-gradient(
+          135deg,
+          #f0d9a4 0%,
+          var(--accent) 45%,
+          #e8c988 70%,
+          var(--accent) 100%
+        );
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        filter: drop-shadow(0 0 28px var(--accent-glow));
+      }
+      .hero-content h1::before,
+      .hero-content h1::after {
+        content: "◆";
+        display: inline-block;
+        font-size: 0.32em;
+        color: var(--accent-2);
+        vertical-align: middle;
+        margin: 0 16px;
+        opacity: 0.75;
+        filter: drop-shadow(0 0 6px var(--accent-2-glow));
       }
       .hero-content p {
         margin-top: 8px;
@@ -144,7 +179,7 @@
       }
       .menu-extra-links a:hover {
         color: var(--accent);
-        border-color: rgba(91, 156, 246, 0.35);
+        border-color: rgba(211, 172, 103, 0.35);
         background: var(--accent-dim);
       }
       .main-content {
@@ -169,7 +204,7 @@
         background: linear-gradient(
           90deg,
           transparent,
-          var(--border-bright),
+          rgba(211, 172, 103, 0.3),
           transparent
         );
       }
@@ -246,7 +281,7 @@
       .guide-card:hover {
         border-color: var(--border-bright);
         transform: translateY(-3px);
-        box-shadow: 0 8px 32px rgba(91, 156, 246, 0.08);
+        box-shadow: 0 8px 32px rgba(211, 172, 103, 0.08);
       }
       .guide-card-header {
         display: flex;
@@ -271,7 +306,7 @@
         padding: 7px 16px;
         border-radius: var(--radius-sm);
         background: var(--accent-dim);
-        border: 1px solid rgba(91, 156, 246, 0.25);
+        border: 1px solid rgba(211, 172, 103, 0.25);
         color: var(--accent);
         font-size: 13px;
         font-weight: 500;
@@ -280,8 +315,8 @@
         white-space: nowrap;
       }
       .guide-card-link:hover {
-        background: rgba(91, 156, 246, 0.15);
-        border-color: rgba(91, 156, 246, 0.5);
+        background: rgba(211, 172, 103, 0.15);
+        border-color: rgba(211, 172, 103, 0.5);
       }
       .skill-img-wrap {
         text-align: center;
@@ -621,6 +656,16 @@
           target="_blank"
           >S5遺物</a
         >
+        <a
+          href="https://mp.weixin.qq.com/s/q6l489Kp1DIs_kOMMkC3fQ"
+          target="_blank"
+          >赤炎之楔</a
+        >
+        <a
+          href="https://mp.weixin.qq.com/s/ZKPEMyHGHPuuCCK9phAAxg"
+          target="_blank"
+          >起源之門</a
+        >
       </div>
     </div>
 
@@ -641,6 +686,17 @@
                 </div>
               </div>
               <a href="hundun.html" class="guide-card-link">前往 →</a>
+            </div>
+          </div>
+          <div class="guide-card">
+            <div class="guide-card-header">
+              <div>
+                <div class="guide-card-title">S6資訊</div>
+                <div class="guide-card-desc">
+                  最新賽季前瞻 · 版本動態 · 更新內容
+                </div>
+              </div>
+              <a href="s6.html" class="guide-card-link">前往 →</a>
             </div>
           </div>
         </div>
@@ -670,7 +726,7 @@
             <tbody>
               <tr>
                 <td class="date-cell">2026/06/12</td>
-                <td>316</td>
+                <td>321</td>
                 <td class="countdown"></td>
                 <td>冰凌尖塔</td>
                 <td>-</td>
@@ -681,7 +737,7 @@
               </tr>
               <tr>
                 <td class="date-cell">2026/06/25</td>
-                <td>329</td>
+                <td>334</td>
                 <td class="countdown"></td>
                 <td>
                   <a
@@ -699,7 +755,7 @@
               </tr>
               <tr>
                 <td class="date-cell">2026/06/26</td>
-                <td>330</td>
+                <td>335</td>
                 <td class="countdown"></td>
                 <td>賽季新地圖開放</td>
                 <td>-</td>
@@ -710,7 +766,7 @@
               </tr>
               <tr>
                 <td class="date-cell">2026/07/09</td>
-                <td>343</td>
+                <td>348</td>
                 <td class="countdown"></td>
                 <td>
                   <a
@@ -728,7 +784,7 @@
               </tr>
               <tr>
                 <td class="date-cell">2026/07/12</td>
-                <td>346</td>
+                <td>351</td>
                 <td class="countdown"></td>
                 <td>伊格尼斯古遺物：第二池</td>
                 <td>-</td>
@@ -739,7 +795,7 @@
               </tr>
               <tr>
                 <td class="date-cell">2026/07/23</td>
-                <td>357</td>
+                <td>362</td>
                 <td class="countdown"></td>
                 <td>
                   <a
@@ -757,7 +813,7 @@
               </tr>
               <tr>
                 <td class="date-cell">2026/08/06</td>
-                <td>371</td>
+                <td>376</td>
                 <td class="countdown"></td>
                 <td>
                   <a
@@ -775,7 +831,7 @@
               </tr>
               <tr>
                 <td class="date-cell">2026/08/11</td>
-                <td>376</td>
+                <td>381</td>
                 <td class="countdown"></td>
                 <td>
                   <a
@@ -793,9 +849,16 @@
               </tr>
               <tr>
                 <td class="date-cell">2026/08/20</td>
-                <td>385</td>
+                <td>390</td>
                 <td class="countdown"></td>
-                <td>赤炎之楔</td>
+                <td>
+                  <a
+                    href="https://mp.weixin.qq.com/s/q6l489Kp1DIs_kOMMkC3fQ"
+                    target="_blank"
+                    class="dungeon-link"
+                    >赤炎之楔</a
+                  >
+                </td>
                 <td>5.14億</td>
                 <td>5.88億</td>
                 <td>7.2億</td>
@@ -804,14 +867,32 @@
               </tr>
               <tr>
                 <td class="date-cell">2026/09/03</td>
-                <td>399</td>
+                <td>404</td>
                 <td class="countdown"></td>
-                <td>起源之門</td>
+                <td>
+                  <a
+                    href="https://mp.weixin.qq.com/s/ZKPEMyHGHPuuCCK9phAAxg"
+                    target="_blank"
+                    class="dungeon-link"
+                    >起源之門</a
+                  >
+                </td>
                 <td>6.8億</td>
                 <td>7.8億</td>
                 <td>9.5億</td>
                 <td>13.6億</td>
-                <td>億</td>
+                <td>18億</td>
+              </tr>
+              <tr>
+                <td class="date-cell">2026/10/02</td>
+                <td>433</td>
+                <td class="countdown"></td>
+                <td>新賽季結束 · 區號合併 1-8</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
               </tr>
             </tbody>
           </table>
@@ -858,12 +939,6 @@
                   class="carousel-img"
                   onclick="openLightbox(4)"
                 />
-                <img
-                  src="pic/mowen.png"
-                  alt="圖6"
-                  class="carousel-img"
-                  onclick="openLightbox(5)"
-                />
               </div>
             </div>
             <button
@@ -879,7 +954,6 @@
             <span class="dot" onclick="carouselGoTo(2)"></span>
             <span class="dot" onclick="carouselGoTo(3)"></span>
             <span class="dot" onclick="carouselGoTo(4)"></span>
-            <span class="dot" onclick="carouselGoTo(5)"></span>
           </div>
           <p
             id="carouselDesc"
@@ -982,14 +1056,13 @@
 
       // 轮播
       let carouselIdx = 0;
-      const carouselTotal = 6;
+      const carouselTotal = 5;
       const carouselImages = [
         "pic/shengji.jpg",
         "pic/fubenzhaungbei.png",
         "pic/yiwu.png",
         "pic/ditu.png",
         "pic/fubenboss.png",
-        "pic/mowen.png"
       ];
       const carouselDescs = [
         "各个等级需要消耗的升级材料",
@@ -997,7 +1070,6 @@
         "遺物总结",
         "S5賽季地圖小資訊, 冰跟火都一樣, 開放日期以6月9日進S5的算",
         "副本Boss的機制",
-        "S5 魔紋通合 彩0 彩10 精通值 角色等級 技能等級點到上限 VS 跟著角色等級 所獲得增傷% "
       ];
 
       function carouselGoTo(idx) {
