@@ -12,18 +12,21 @@
     />
     <style>
       :root {
-        --bg-base: #0e0f13;
-        --bg-surface: #161820;
-        --bg-card: #1c1e28;
-        --bg-hover: #222434;
-        --border: rgba(255, 255, 255, 0.07);
-        --border-bright: rgba(255, 255, 255, 0.13);
-        --accent: #5b9cf6;
-        --accent-glow: rgba(91, 156, 246, 0.18);
-        --accent-dim: rgba(91, 156, 246, 0.08);
-        --text-primary: #e8eaf0;
-        --text-secondary: #8e92a6;
-        --text-muted: #555a72;
+        --bg-base: #0a0a13;
+        --bg-surface: #13121e;
+        --bg-card: #181726;
+        --bg-hover: #201e34;
+        --border: rgba(201, 168, 106, 0.1);
+        --border-bright: rgba(201, 168, 106, 0.24);
+        --accent: #d3ac67;
+        --accent-glow: rgba(211, 172, 103, 0.24);
+        --accent-dim: rgba(211, 172, 103, 0.09);
+        --accent-2: #9c81e6;
+        --accent-2-glow: rgba(156, 129, 230, 0.2);
+        --accent-2-dim: rgba(156, 129, 230, 0.08);
+        --text-primary: #ece4d3;
+        --text-secondary: #9791a8;
+        --text-muted: #565270;
         --radius-sm: 6px;
         --radius-md: 10px;
         --radius-lg: 14px;
@@ -49,14 +52,26 @@
         inset: 0;
         background-image:
           radial-gradient(
-            ellipse 80% 50% at 20% -10%,
-            rgba(91, 156, 246, 0.06) 0%,
-            transparent 60%
+            ellipse 70% 46% at 18% -8%,
+            rgba(211, 172, 103, 0.09) 0%,
+            transparent 58%
           ),
           radial-gradient(
-            ellipse 60% 40% at 80% 110%,
-            rgba(183, 140, 247, 0.05) 0%,
-            transparent 60%
+            ellipse 55% 38% at 84% 105%,
+            rgba(156, 129, 230, 0.08) 0%,
+            transparent 58%
+          ),
+          repeating-linear-gradient(
+            135deg,
+            rgba(211, 172, 103, 0.025) 0px,
+            rgba(211, 172, 103, 0.025) 1px,
+            transparent 1px,
+            transparent 68px
+          ),
+          radial-gradient(
+            circle at 50% 0%,
+            rgba(10, 10, 19, 0) 0%,
+            rgba(10, 10, 19, 0.5) 100%
           );
         pointer-events: none;
         z-index: 0;
@@ -73,14 +88,34 @@
         font-size: clamp(1.8rem, 4vw, 2.8rem);
         font-weight: 600;
         letter-spacing: 0.12em;
-        color: var(--text-primary);
-        text-shadow: 0 0 40px rgba(91, 156, 246, 0.4);
+        background: linear-gradient(
+          135deg,
+          #f0d9a4 0%,
+          var(--accent) 45%,
+          #e8c988 70%,
+          var(--accent) 100%
+        );
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        filter: drop-shadow(0 0 28px var(--accent-glow));
+      }
+      header h1::before,
+      header h1::after {
+        content: "◆";
+        display: inline-block;
+        font-size: 0.32em;
+        color: var(--accent-2);
+        vertical-align: middle;
+        margin: 0 16px;
+        opacity: 0.75;
+        filter: drop-shadow(0 0 6px var(--accent-2-glow));
       }
       header p {
-        margin-top: 8px;
+        margin-top: 10px;
         font-size: 13px;
         color: var(--text-muted);
-        letter-spacing: 0.05em;
+        letter-spacing: 0.18em;
       }
       .back-link {
         display: inline-block;
@@ -90,12 +125,12 @@
         text-decoration: none;
         padding: 6px 14px;
         border-radius: 999px;
-        border: 1px solid rgba(91, 156, 246, 0.35);
+        border: 1px solid rgba(211, 172, 103, 0.35);
         background: var(--accent-dim);
         transition: all 0.2s;
       }
       .back-link:hover {
-        background: rgba(91, 156, 246, 0.15);
+        background: rgba(211, 172, 103, 0.16);
       }
       .menu-extra {
         max-width: 1400px;
@@ -137,7 +172,7 @@
       }
       .menu-extra-links a:hover {
         color: var(--accent);
-        border-color: rgba(91, 156, 246, 0.35);
+        border-color: rgba(211, 172, 103, 0.35);
         background: var(--accent-dim);
       }
       .main-content {
@@ -162,7 +197,7 @@
         background: linear-gradient(
           90deg,
           transparent,
-          var(--border-bright),
+          rgba(211, 172, 103, 0.3),
           transparent
         );
       }
@@ -325,11 +360,16 @@
         padding: 14px 18px;
         background: var(--bg-card);
         border: 1px solid var(--border);
+        border-left: 2px solid rgba(211, 172, 103, 0.3);
         border-radius: var(--radius-md);
-        transition: border-color 0.2s;
+        transition:
+          border-color 0.2s,
+          box-shadow 0.2s;
       }
       .info-pill:hover {
         border-color: var(--border-bright);
+        border-left-color: var(--accent);
+        box-shadow: 0 4px 20px rgba(211, 172, 103, 0.06);
       }
       .info-pill .label {
         font-size: 12px;
@@ -445,6 +485,38 @@
           <div class="info-pill">
             <span class="label">小推車上限</span>
             <span class="value">432</span>
+          </div>
+          <div class="info-pill">
+            <span class="label">職業轉數</span>
+            <span class="value">8 轉</span>
+          </div>
+          <div class="info-pill">
+            <span class="label">等級上限</span>
+            <span class="value">230 級</span>
+          </div>
+          <div class="info-pill">
+            <span class="label">職業等級</span>
+            <span class="value">480 級（7轉55級）</span>
+          </div>
+          <div class="info-pill">
+            <span class="label">地圖解鎖</span>
+            <span class="value">艾伯希七</span>
+          </div>
+          <div class="info-pill">
+            <span class="label">寶石孔位</span>
+            <span class="value">5 孔</span>
+          </div>
+          <div class="info-pill">
+            <span class="label">裝備強化需求</span>
+            <span class="value">250 級</span>
+          </div>
+          <div class="info-pill">
+            <span class="label">幻獸天賦頁（藍/紫/橙）</span>
+            <span class="value">第10頁 · 7888 / 1972 / 493</span>
+          </div>
+          <div class="info-pill">
+            <span class="label">寶石階級</span>
+            <span class="value">14 階</span>
           </div>
         </div>
       </section>
